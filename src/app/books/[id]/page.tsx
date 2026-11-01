@@ -54,6 +54,7 @@ function BookDetailsContent() {
   const [book, setBook] = useState<BookDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [imageError, setImageError] = useState(false);
 
   // Borrow modal states
   const [borrowModalOpen, setBorrowModalOpen] = useState(false);
@@ -295,12 +296,20 @@ function BookDetailsContent() {
         <div className="md:col-span-5">
           <div className="overflow-hidden rounded-2xl border border-stone-200/90 bg-white p-3 shadow-md">
             <div className="relative aspect-3/4 w-full overflow-hidden rounded-xl bg-stone-100">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={book.image}
-                alt={book.title}
-                className="h-full w-full object-cover"
-              />
+              {!imageError && book.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={book.image}
+                  alt={book.title}
+                  onError={() => setImageError(true)}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-stone-100 p-6 text-stone-400">
+                  <BookOpen className="h-12 w-12 text-stone-300" />
+                  <span className="text-xs font-medium text-stone-400">No cover image available</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
