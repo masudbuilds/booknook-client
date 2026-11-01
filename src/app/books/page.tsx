@@ -159,7 +159,7 @@ export default function AllBooksPage() {
               key={item}
               className="flex h-full animate-pulse flex-col overflow-hidden rounded-xl border border-stone-200 bg-white"
             >
-              <div className="aspect-[3/4] w-full bg-stone-200" />
+              <div className="aspect-3/4 w-full bg-stone-200" />
               <div className="space-y-3 p-4">
                 <div className="h-4 w-3/4 rounded bg-stone-200" />
                 <div className="h-3 w-1/2 rounded bg-stone-200" />
