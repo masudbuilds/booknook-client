@@ -27,7 +27,7 @@ export async function GET() {
     const token = jwt.sign(payload, jwtSecret, { expiresIn: "7d" });
 
     return NextResponse.json({ token, user: payload });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: "Failed to generate token" }, { status: 500 });
   }
 }
