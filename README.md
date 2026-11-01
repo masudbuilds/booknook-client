@@ -2,8 +2,9 @@
 
 A warm, community-driven online library platform built with Next.js App Router, TypeScript, Tailwind CSS, and Better Auth. BookNook allows readers to browse curated shelves, borrow books with real-time copy tracking, add personal titles to the library catalog, and manage their borrowing history.
 
-**Live Demo:** [https://booknook-client.vercel.app](https://booknook-client.vercel.app) *(Deployment placeholder)*  
-**Backend Repository:** [booknook-server](../booknook-server)
+- **Live Client:** [https://booknook-client-roan.vercel.app/](https://booknook-client-roan.vercel.app/)
+- **Live Backend API:** [https://booknook-server-rho.vercel.app/](https://booknook-server-rho.vercel.app/)
+- **Backend Repository:** [booknook-server](../booknook-server)
 
 ---
 
@@ -38,7 +39,7 @@ A warm, community-driven online library platform built with Next.js App Router, 
 - Node.js 18.18+ or 20+
 - npm, yarn, or pnpm
 - Running MongoDB instance or MongoDB Atlas cluster
-- Running BookNook Express backend server
+- Running BookNook Express backend server (or use the deployed backend URL)
 
 ### 1. Clone & Install Dependencies
 
@@ -57,11 +58,11 @@ cp .env.example .env
 
 Set the following environment variables:
 
-| Variable | Description | Example / Default |
+| Variable | Description | Production Value / Example |
 | :--- | :--- | :--- |
-| `NEXT_PUBLIC_API_URL` | Express backend API endpoint URL | `http://localhost:5000` |
-| `NEXT_PUBLIC_APP_URL` | Base URL of this client application | `http://localhost:3000` |
-| `BETTER_AUTH_URL` | Better Auth server base URL | `http://localhost:3000` |
+| `NEXT_PUBLIC_API_URL` | Express backend API endpoint URL | `https://booknook-server-rho.vercel.app` *(or `http://localhost:5000`)* |
+| `NEXT_PUBLIC_APP_URL` | Base URL of this client application | `https://booknook-client-roan.vercel.app` *(or `http://localhost:3000`)* |
+| `BETTER_AUTH_URL` | Better Auth server base URL | `https://booknook-client-roan.vercel.app` *(or `http://localhost:3000`)* |
 | `BETTER_AUTH_SECRET` | Secret key for Better Auth sessions (min 32 chars) | `your_better_auth_secret` |
 | `JWT_SECRET` | Shared secret for signing API JWTs (must match server) | `your_shared_jwt_secret` |
 | `MONGODB_URI` | MongoDB connection URI for Better Auth users & sessions | `mongodb+srv://...` |
@@ -70,7 +71,7 @@ Set the following environment variables:
 | `GOOGLE_CLIENT_SECRET` | *(Optional)* Google OAuth Client Secret | `your_google_client_secret` |
 | `NEXT_PUBLIC_IMGBB_API_KEY`| *(Optional)* ImgBB API key for uploading book covers | `your_imgbb_key` |
 
-> **Note:** Google OAuth is optional. If `GOOGLE_CLIENT_ID` or `GOOGLE_CLIENT_SECRET` is left empty, the application will default to email/password authentication.
+> **Note on Authentication:** Better Auth handles user registration and login with encrypted cookies. When protected Express API requests are needed, the client queries `/api/auth/jwt` directly to retrieve a short-lived Bearer token signed with the shared `JWT_SECRET`. Google OAuth is optional; if omitted, the app smoothly uses email/password authentication.
 
 ### 3. Run the Development Server
 
@@ -95,6 +96,11 @@ npm start
 2. Import the project into [Vercel](https://vercel.com).
 3. Set the Root Directory to `booknook-client` if in a monorepo.
 4. Add all environment variables listed above in the Vercel Project Settings:
-   - Point `NEXT_PUBLIC_API_URL` to your deployed backend URL (e.g. `https://booknook-server.vercel.app`).
-   - Point `NEXT_PUBLIC_APP_URL` and `BETTER_AUTH_URL` to your deployed Vercel domain (e.g. `https://booknook-client.vercel.app`).
+   - `NEXT_PUBLIC_API_URL`: `https://booknook-server-rho.vercel.app`
+   - `NEXT_PUBLIC_APP_URL`: `https://booknook-client-roan.vercel.app`
+   - `BETTER_AUTH_URL`: `https://booknook-client-roan.vercel.app`
+   - `BETTER_AUTH_SECRET`: your 32+ character session secret
+   - `JWT_SECRET`: must match `JWT_SECRET` on `booknook-server`
+   - `MONGODB_URI`: your MongoDB Atlas connection string
+   - `MONGODB_DB_NAME`: `booknook`
 5. Deploy.
