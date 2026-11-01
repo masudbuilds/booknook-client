@@ -128,3 +128,26 @@
     @apply font-sans;
   }
 }
+
+.booknook-hero-swiper .swiper-button-next,
+.booknook-hero-swiper .swiper-button-prev {
+  color: #fef3c7 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 9999px;
+  background-color: rgba(28, 63, 58, 0.45);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.booknook-hero-swiper .swiper-button-next:hover,
+.booknook-hero-swiper .swiper-button-prev:hover {
+  background-color: rgba(28, 63, 58, 0.85);
+  transform: scale(1.05);
+}
+
+.booknook-hero-swiper .swiper-button-next::after,
+.booknook-hero-swiper .swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: bold;
+}
