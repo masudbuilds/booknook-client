@@ -1,0 +1,77 @@
+import { BookmarkCheck, RotateCcw, Search } from "lucide-react";
+
+const steps = [
+  {
+    step: "01",
+    title: "Discover Your Book",
+    description:
+      "Explore the library catalog by title, author, or category. Inspect live copy availability before choosing your next read.",
+    icon: Search,
+    color: "bg-emerald-50 text-[#1C3F3A] border-emerald-200",
+  },
+  {
+    step: "02",
+    title: "Borrow In One Click",
+    description:
+      "Select your planned return date and confirm your borrow. An available copy is instantly reserved and added to your shelf.",
+    icon: BookmarkCheck,
+    color: "bg-amber-50 text-[#C86244] border-amber-200",
+  },
+  {
+    step: "03",
+    title: "Read & Return",
+    description:
+      "Enjoy reading at your leisure. When you are done, return the book with a single click so other community readers can enjoy it.",
+    icon: RotateCcw,
+    color: "bg-stone-100 text-[#1C3F3A] border-stone-200",
+  },
+];
+
+export default function HowItWorks() {
+  return (
+    <section className="space-y-8">
+      <div className="text-center">
+        <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-[#1C3F3A] border border-emerald-200">
+          <span>Simple Process</span>
+        </div>
+        <h2 className="mt-2 font-serif text-2xl font-bold tracking-tight text-[#1C3F3A] sm:text-3xl">
+          How Borrowing Works
+        </h2>
+        <p className="mt-1 max-w-xl mx-auto text-sm text-stone-600">
+          Borrowing at BookNook is designed to be free, simple, and neighborly.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {steps.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.step}
+              className="relative flex flex-col rounded-xl border border-stone-200/90 bg-[#FDFBF7] p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+            >
+              <div className="flex items-center justify-between">
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl border ${item.color}`}
+                >
+                  <Icon className="h-6 w-6" />
+                </div>
+                <span className="font-serif text-2xl font-bold text-stone-300">
+                  {item.step}
+                </span>
+              </div>
+
+              <h3 className="mt-5 font-serif text-lg font-bold text-stone-900">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                {item.description}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
