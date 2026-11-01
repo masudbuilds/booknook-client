@@ -37,7 +37,7 @@ export default function BookCard({ book }: BookCardProps) {
 
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-stone-200/90 bg-[#FDFBF7] shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-stone-100">
+      <div className="relative aspect-3/4 w-full overflow-hidden bg-stone-100">
         {!imageError && book.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
