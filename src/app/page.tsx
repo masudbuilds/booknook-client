@@ -6,21 +6,24 @@ import ReadingInspiration from "@/components/ReadingInspiration";
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:py-8 sm:px-6 lg:px-8 space-y-16 sm:space-y-20 lg:space-y-24">
-      {/* 1. Hero Section */}
+    <div className="w-full space-y-12 sm:space-y-16 lg:space-y-20 pb-16">
+      {/* 1. Full-Width Editorial Hero Slider */}
       <HeroSection />
 
-      {/* 2. Features Section */}
-      <Features />
+      {/* Main Content Sections Container */}
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20 lg:space-y-24">
+        {/* 2. Features Section */}
+        <Features />
 
-      {/* 3. New Arrivals */}
-      <NewArrivals />
+        {/* 3. New Arrivals */}
+        <NewArrivals />
 
-      {/* 4. Featured Categories */}
-      <FeaturedCategories />
+        {/* 4. Featured Categories */}
+        <FeaturedCategories />
 
-      {/* 5. Reading Inspiration */}
-      <ReadingInspiration />
+        {/* 5. Reading Inspiration */}
+        <ReadingInspiration />
+      </div>
     </div>
   );
 }
