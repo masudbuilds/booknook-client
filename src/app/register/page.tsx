@@ -109,7 +109,7 @@ function RegisterForm() {
                 "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80')",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-booknook-text/95 via-booknook-text/75 to-booknook-text/40" />
+          <div className="absolute inset-0 bg-linear-to-t from-booknook-text/95 via-booknook-text/75 to-booknook-text/40" />
 
           {/* Top Brand Mark */}
           <div className="relative z-10">

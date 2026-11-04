@@ -221,7 +221,7 @@ function MyBooksContent() {
               key={item}
               className="flex h-full animate-pulse flex-col overflow-hidden rounded-xs border border-booknook-border bg-booknook-white shadow-2xs"
             >
-              <div className="aspect-[3/4] w-full bg-booknook-secondary/50" />
+              <div className="aspect-3/4 w-full bg-booknook-secondary/50" />
               <div className="space-y-3 p-5">
                 <div className="h-4 w-3/4 rounded-xs bg-booknook-secondary/60" />
                 <div className="h-3 w-1/2 rounded-xs bg-booknook-secondary/40" />
@@ -294,7 +294,7 @@ function MyBooksContent() {
                 className="group flex h-full flex-col overflow-hidden rounded-xs border border-booknook-border bg-booknook-white shadow-2xs transition-all duration-300 hover:border-booknook-accent hover:-translate-y-0.5 hover:shadow-md"
               >
                 {/* Book Cover with Spine Shadow Effect */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-booknook-secondary/40 after:absolute after:inset-y-0 after:left-0 after:w-2 after:bg-linear-to-r after:from-black/25 after:to-transparent after:pointer-events-none">
+                <div className="relative aspect-3/4 w-full overflow-hidden bg-booknook-secondary/40 after:absolute after:inset-y-0 after:left-0 after:w-2 after:bg-linear-to-r after:from-black/25 after:to-transparent after:pointer-events-none">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={book.image}
