@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-[#F7F4ED] text-[#292820] font-sans antialiased selection:bg-[#EAE2D5] selection:text-[#292820] overflow-x-hidden">
+      <body className="flex min-h-full flex-col bg-booknook-primary text-booknook-bg font-sans antialiased selection:bg-booknook-accent selection:text-booknook-primary overflow-x-hidden">
         <Toaster
           position="top-right"
           toastOptions={{
