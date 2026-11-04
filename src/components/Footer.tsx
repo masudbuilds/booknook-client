@@ -132,15 +132,15 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs text-booknook-text/80">
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-booknook-accent shrink-0 mt-0.5" />
-                <span>42 Library Lane, Book District, Reading Quarter</span>
+                <span>Dhaka, Bangladesh</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-booknook-accent shrink-0" />
-                <span>support@booknook.library</span>
+                <span>help@booknook.org</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-booknook-accent shrink-0" />
-                <span>+1 (800) 266-5665</span>
+                <span>+8801700000000</span>
               </li>
             </ul>
             <p className="pt-2 text-[11px] text-booknook-text/60 font-light">
