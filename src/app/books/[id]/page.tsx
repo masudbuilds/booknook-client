@@ -231,31 +231,31 @@ function BookDetailsContent() {
   if (loading) {
     return (
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8 space-y-8 animate-pulse">
-        <div className="h-4 w-28 rounded bg-[#EAE2D5]/60" />
+        <div className="h-4 w-28 rounded bg-booknook-secondary/60" />
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 items-start">
           <div className="md:col-span-5">
-            <div className="rounded-sm border border-[#E5DED2] bg-white p-3 shadow-xs">
-              <div className="aspect-[3/4] w-full rounded-xs bg-[#EAE2D5]/50" />
+            <div className="rounded-sm border border-booknook-border bg-booknook-white p-3 shadow-xs">
+              <div className="aspect-[3/4] w-full rounded-xs bg-booknook-secondary/50" />
             </div>
           </div>
           <div className="md:col-span-7 space-y-5">
             <div className="flex gap-2">
-              <div className="h-6 w-24 rounded bg-[#EAE2D5]/60" />
-              <div className="h-6 w-32 rounded bg-[#EAE2D5]/40" />
+              <div className="h-6 w-24 rounded bg-booknook-secondary/60" />
+              <div className="h-6 w-32 rounded bg-booknook-secondary/40" />
             </div>
-            <div className="h-8 w-3/4 rounded bg-[#EAE2D5]/70" />
-            <div className="h-4 w-1/3 rounded bg-[#EAE2D5]/50" />
-            <div className="rounded-sm border border-[#E5DED2] bg-white p-5 space-y-3">
-              <div className="h-4 w-full rounded bg-[#EAE2D5]/40" />
-              <div className="h-4 w-full rounded bg-[#EAE2D5]/40" />
-              <div className="h-4 w-2/3 rounded bg-[#EAE2D5]/40" />
+            <div className="h-8 w-3/4 rounded bg-booknook-secondary/70" />
+            <div className="h-4 w-1/3 rounded bg-booknook-secondary/50" />
+            <div className="rounded-sm border border-booknook-border bg-booknook-white p-5 space-y-3">
+              <div className="h-4 w-full rounded bg-booknook-secondary/40" />
+              <div className="h-4 w-full rounded bg-booknook-secondary/40" />
+              <div className="h-4 w-2/3 rounded bg-booknook-secondary/40" />
             </div>
             <div className="space-y-2 pt-2">
-              <div className="h-4 w-full rounded bg-[#EAE2D5]/40" />
-              <div className="h-4 w-5/6 rounded bg-[#EAE2D5]/40" />
-              <div className="h-4 w-4/6 rounded bg-[#EAE2D5]/30" />
+              <div className="h-4 w-full rounded bg-booknook-secondary/40" />
+              <div className="h-4 w-5/6 rounded bg-booknook-secondary/40" />
+              <div className="h-4 w-4/6 rounded bg-booknook-secondary/30" />
             </div>
-            <div className="h-10 w-48 rounded bg-[#EAE2D5]/60 mt-4" />
+            <div className="h-10 w-48 rounded bg-booknook-secondary/60 mt-4" />
           </div>
         </div>
       </div>
@@ -265,27 +265,27 @@ function BookDetailsContent() {
   if (error || !book) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <div className="rounded-2xl border border-[#E5DED2] bg-[#FFFFFF] p-12 shadow-xs">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#EAE2D5]/50 text-[#987A50] mb-3">
+        <div className="rounded-2xl border border-booknook-border bg-booknook-white p-12 shadow-xs">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-booknook-secondary/50 text-booknook-accent mb-3">
             <BookOpen className="h-7 w-7" />
           </div>
-          <h2 className="mt-2 font-serif text-2xl font-bold text-[#292820]">
+          <h2 className="mt-2 font-serif text-2xl font-bold text-booknook-text">
             Book Not Found
           </h2>
-          <p className="mt-2 text-sm text-stone-500 max-w-md mx-auto">
+          <p className="mt-2 text-sm text-booknook-text/60 max-w-md mx-auto">
             {error || "The book you are looking for does not exist or has been removed from the catalog."}
           </p>
           <div className="mt-6 flex justify-center gap-3">
             <Button
               variant="outline"
               onClick={fetchBookDetails}
-              className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
+              className="border-booknook-border text-booknook-text hover:bg-booknook-secondary active:scale-[0.98] transition-all"
             >
               <RefreshCw className="mr-2 h-4 w-4" />
               Try Again
             </Button>
             <Link href="/books">
-              <Button className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-colors">
+              <Button className="bg-booknook-text text-booknook-bg hover:bg-booknook-accent active:scale-[0.98] transition-colors">
                 Back to All Books
               </Button>
             </Link>
@@ -312,7 +312,7 @@ function BookDetailsContent() {
       <div>
         <Link
           href="/books"
-          className="inline-flex items-center text-xs uppercase tracking-widest font-medium text-[#292820]/75 hover:text-[#987A50] transition-colors focus-visible:ring-1 focus-visible:ring-[#987A50] rounded-xs"
+          className="inline-flex items-center text-xs uppercase tracking-widest font-medium text-booknook-text/75 hover:text-booknook-accent transition-colors focus-visible:ring-1 focus-visible:ring-booknook-accent rounded-xs"
         >
           <ArrowLeft className="mr-1.5 h-3.5 w-3.5" />
           Back to Books
@@ -321,8 +321,8 @@ function BookDetailsContent() {
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-12 items-start">
         <div className="md:col-span-5">
-          <div className="overflow-hidden rounded-sm border border-[#E5DED2] bg-white p-3 shadow-xs">
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs bg-[#EAE2D5]/40 border border-[#E5DED2] after:absolute after:inset-y-0 after:left-0 after:w-3.5 after:bg-gradient-to-r after:from-black/20 after:to-transparent after:pointer-events-none">
+          <div className="overflow-hidden rounded-sm border border-booknook-border bg-booknook-white p-3 shadow-xs">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs bg-booknook-secondary/40 border border-booknook-border after:absolute after:inset-y-0 after:left-0 after:w-3.5 after:bg-gradient-to-r after:from-black/20 after:to-transparent after:pointer-events-none">
               {!imageError && book.image ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -332,8 +332,8 @@ function BookDetailsContent() {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#EAE2D5]/30 p-6 text-[#292820]/40">
-                  <BookOpen className="h-12 w-12 text-[#987A50]/40" />
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-booknook-secondary/30 p-6 text-booknook-text/40">
+                  <BookOpen className="h-12 w-12 text-booknook-accent/40" />
                   <span className="text-xs uppercase tracking-wider font-light">No cover image available</span>
                 </div>
               )}
@@ -344,14 +344,14 @@ function BookDetailsContent() {
         <div className="md:col-span-7 space-y-6">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-xs bg-[#EAE2D5]/70 text-[#292820] border border-[#E5DED2] text-[11px] uppercase tracking-wider font-medium px-3 py-1">
+              <span className="rounded-xs bg-booknook-secondary/70 text-booknook-text border border-booknook-border text-[11px] uppercase tracking-wider font-medium px-3 py-1">
                 {book.category}
               </span>
               <span
                 className={cn(
                   "rounded-xs px-3 py-1 text-[11px] uppercase tracking-wider font-medium border",
                   isAvailable
-                    ? "bg-[#F7F4ED] text-[#292820] border-[#E5DED2]"
+                    ? "bg-booknook-bg text-booknook-text border-booknook-border"
                     : "bg-red-50 text-red-700 border-red-200"
                 )}
               >
@@ -359,38 +359,38 @@ function BookDetailsContent() {
               </span>
             </div>
 
-            <h1 className="font-serif text-3xl font-normal tracking-tight text-[#292820] sm:text-4xl leading-tight">
+            <h1 className="font-serif text-3xl font-normal tracking-tight text-booknook-text sm:text-4xl leading-tight">
               {book.title}
             </h1>
 
-            <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-[#292820]/70">
-              <User className="h-3.5 w-3.5 text-[#987A50]" />
+            <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-booknook-text/70">
+              <User className="h-3.5 w-3.5 text-booknook-accent" />
               <span className="font-medium">By {book.author}</span>
             </div>
           </div>
 
-          <Card className="border-[#E5DED2] bg-white shadow-xs rounded-sm">
+          <Card className="border-booknook-border bg-booknook-white shadow-xs rounded-sm">
             <CardContent className="p-5 space-y-3 text-xs sm:text-sm">
-              <div className="flex items-center justify-between border-b border-[#E5DED2]/60 pb-2.5">
-                <span className="flex items-center gap-1.5 text-[#292820]/70 text-xs">
-                  <Layers className="h-3.5 w-3.5 text-[#987A50]" />
+              <div className="flex items-center justify-between border-b border-booknook-border/60 pb-2.5">
+                <span className="flex items-center gap-1.5 text-booknook-text/70 text-xs">
+                  <Layers className="h-3.5 w-3.5 text-booknook-accent" />
                   Total Copies in Library
                 </span>
-                <span className="font-medium text-[#292820] text-xs">{book.totalCopies}</span>
+                <span className="font-medium text-booknook-text text-xs">{book.totalCopies}</span>
               </div>
-              <div className="flex items-center justify-between border-b border-[#E5DED2]/60 pb-2.5">
-                <span className="flex items-center gap-1.5 text-[#292820]/70 text-xs">
-                  <Calendar className="h-3.5 w-3.5 text-[#987A50]" />
+              <div className="flex items-center justify-between border-b border-booknook-border/60 pb-2.5">
+                <span className="flex items-center gap-1.5 text-booknook-text/70 text-xs">
+                  <Calendar className="h-3.5 w-3.5 text-booknook-accent" />
                   Added to Catalog
                 </span>
-                <span className="font-medium text-[#292820] text-xs">{formattedDate}</span>
+                <span className="font-medium text-booknook-text text-xs">{formattedDate}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-[#292820]/70 text-xs">
-                  <User className="h-3.5 w-3.5 text-[#987A50]" />
+                <span className="flex items-center gap-1.5 text-booknook-text/70 text-xs">
+                  <User className="h-3.5 w-3.5 text-booknook-accent" />
                   Contributed By
                 </span>
-                <span className="font-medium text-[#292820] text-xs">
+                <span className="font-medium text-booknook-text text-xs">
                   {book.userName || "Community Reader"}
                 </span>
               </div>
@@ -398,13 +398,13 @@ function BookDetailsContent() {
           </Card>
 
           <div className="space-y-2">
-            <h3 className="font-serif text-lg font-normal text-[#292820]">Synopsis & Overview</h3>
-            <p className="whitespace-pre-line text-xs sm:text-sm leading-relaxed text-[#292820]/75 font-light">
+            <h3 className="font-serif text-lg font-normal text-booknook-text">Synopsis & Overview</h3>
+            <p className="whitespace-pre-line text-xs sm:text-sm leading-relaxed text-booknook-text/75 font-light">
               {book.description}
             </p>
           </div>
 
-          <div className="pt-4 border-t border-[#E5DED2]">
+          <div className="pt-4 border-t border-booknook-border">
             <Button
               onClick={() => {
                 setDateError(null);
@@ -416,14 +416,14 @@ function BookDetailsContent() {
               className={cn(
                 "w-full sm:w-auto text-xs uppercase tracking-widest font-medium rounded-sm transition-all shadow-xs px-6 py-2.5 active:scale-[0.98]",
                 isAvailable
-                  ? "bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50]"
-                  : "bg-[#EAE2D5] text-[#292820]/40 cursor-not-allowed hover:bg-[#EAE2D5]"
+                  ? "bg-booknook-text text-booknook-bg hover:bg-booknook-accent"
+                  : "bg-booknook-secondary text-booknook-text/40 cursor-not-allowed hover:bg-booknook-secondary"
               )}
             >
               <BookOpen className="mr-2 h-4 w-4" />
               {isAvailable ? "Borrow This Book" : "Currently Unavailable"}
             </Button>
-            <p className="mt-2 text-xs text-[#292820]/60 font-light">
+            <p className="mt-2 text-xs text-booknook-text/60 font-light">
               {isAvailable
                 ? "Borrowing is free for all registered library members. Select a return date to proceed."
                 : "All copies of this book are currently on loan. Please check back later."}
@@ -443,8 +443,8 @@ function BookDetailsContent() {
           </DialogHeader>
 
           {/* Book Summary Card */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#E5DED2] bg-[#EAE2D5]/30 p-3">
-            <div className="relative aspect-3/4 w-12 shrink-0 overflow-hidden rounded bg-[#EAE2D5]/50 border border-[#E5DED2]">
+          <div className="flex items-center gap-3 rounded-lg border border-booknook-border bg-booknook-secondary/30 p-3">
+            <div className="relative aspect-3/4 w-12 shrink-0 overflow-hidden rounded bg-booknook-secondary/50 border border-booknook-border">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={book.image}
@@ -453,15 +453,15 @@ function BookDetailsContent() {
               />
             </div>
             <div className="min-w-0 flex-1">
-              <h4 className="font-serif text-sm font-bold text-[#292820] truncate">
+              <h4 className="font-serif text-sm font-bold text-booknook-text truncate">
                 {book.title}
               </h4>
-              <p className="text-xs text-stone-500 truncate">By {book.author}</p>
+              <p className="text-xs text-booknook-text/60 truncate">By {book.author}</p>
               <div className="mt-1 flex items-center gap-2">
-                <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-[#E5DED2] text-[#292820]">
+                <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-booknook-border text-booknook-text">
                   {book.category}
                 </Badge>
-                <span className="text-[11px] font-medium text-[#987A50]">
+                <span className="text-[11px] font-medium text-booknook-accent">
                   {book.availableCopies} available
                 </span>
               </div>
@@ -477,7 +477,7 @@ function BookDetailsContent() {
           >
             {/* Read-only User Name */}
             <div className="space-y-1.5">
-              <Label htmlFor="borrowerName" className="text-xs font-semibold text-[#292820]">
+              <Label htmlFor="borrowerName" className="text-xs font-semibold text-booknook-text">
                 Borrower Name
               </Label>
               <Input
@@ -485,13 +485,13 @@ function BookDetailsContent() {
                 value={borrowerName}
                 readOnly
                 disabled
-                className="bg-[#EAE2D5]/25 text-[#292820] cursor-not-allowed border-[#E5DED2] text-sm"
+                className="bg-booknook-secondary/25 text-booknook-text cursor-not-allowed border-booknook-border text-sm"
               />
             </div>
 
             {/* Read-only User Email */}
             <div className="space-y-1.5">
-              <Label htmlFor="borrowerEmail" className="text-xs font-semibold text-[#292820]">
+              <Label htmlFor="borrowerEmail" className="text-xs font-semibold text-booknook-text">
                 Borrower Email
               </Label>
               <Input
@@ -499,13 +499,13 @@ function BookDetailsContent() {
                 value={borrowerEmail}
                 readOnly
                 disabled
-                className="bg-[#EAE2D5]/25 text-[#292820] cursor-not-allowed border-[#E5DED2] text-sm"
+                className="bg-booknook-secondary/25 text-booknook-text cursor-not-allowed border-booknook-border text-sm"
               />
             </div>
 
             {/* Read-only Borrow Date */}
             <div className="space-y-1.5">
-              <Label htmlFor="borrowDate" className="text-xs font-semibold text-[#292820]">
+              <Label htmlFor="borrowDate" className="text-xs font-semibold text-booknook-text">
                 Borrow Date
               </Label>
               <Input
@@ -514,17 +514,17 @@ function BookDetailsContent() {
                 value={todayStr}
                 readOnly
                 disabled
-                className="bg-[#EAE2D5]/25 text-[#292820] cursor-not-allowed border-[#E5DED2] text-sm"
+                className="bg-booknook-secondary/25 text-booknook-text cursor-not-allowed border-booknook-border text-sm"
               />
             </div>
 
             {/* Select Return Date */}
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <Label htmlFor="returnDate" className="text-xs font-semibold text-stone-700">
+                <Label htmlFor="returnDate" className="text-xs font-semibold text-booknook-text">
                   Return Date <span className="text-red-500">*</span>
                 </Label>
-                <span className="text-[11px] text-stone-400">Must be after today</span>
+                <span className="text-[11px] text-booknook-text/50">Must be after today</span>
               </div>
               <Input
                 id="returnDate"
@@ -536,7 +536,7 @@ function BookDetailsContent() {
                   if (dateError) setDateError(null);
                 }}
                 className={cn(
-                  "border-[#E5DED2] focus-visible:ring-[#987A50] text-sm",
+                  "border-booknook-border focus-visible:ring-booknook-accent text-sm",
                   dateError && "border-red-500 focus-visible:ring-red-500"
                 )}
                 required
@@ -555,14 +555,14 @@ function BookDetailsContent() {
                 variant="outline"
                 onClick={() => setBorrowModalOpen(false)}
                 disabled={borrowing}
-                className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
+                className="border-booknook-border text-booknook-text hover:bg-booknook-secondary active:scale-[0.98] transition-all"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 disabled={borrowing}
-                className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-all"
+                className="bg-booknook-text text-booknook-bg hover:bg-booknook-accent active:scale-[0.98] transition-all"
               >
                 {borrowing ? (
                   <>

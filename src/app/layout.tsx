@@ -31,15 +31,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-booknook-primary text-booknook-bg font-sans antialiased selection:bg-booknook-accent selection:text-booknook-primary overflow-x-hidden">
+      <body className="flex min-h-full flex-col bg-booknook-bg text-booknook-text font-sans antialiased selection:bg-booknook-accent selection:text-booknook-white overflow-x-hidden">
         <Toaster
           position="top-right"
           toastOptions={{
             duration: 3500,
             style: {
-              background: "#292820",
-              color: "#F7F4ED",
-              border: "1px solid #E5DED2",
+              background: "var(--color-booknook-text, #292820)",
+              color: "var(--color-booknook-bg, #F7F4ED)",
+              border: "1px solid var(--color-booknook-border, #E5DED2)",
               fontSize: "13px",
               borderRadius: "4px",
             },

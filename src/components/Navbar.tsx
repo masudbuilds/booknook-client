@@ -64,18 +64,18 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#E5DED2] bg-[#F7F4ED]/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 w-full border-b border-booknook-border bg-booknook-bg/95 backdrop-blur-sm">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-[#292820] text-[#F7F4ED] transition-colors group-hover:bg-[#987A50]">
+          <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-booknook-text text-booknook-bg transition-colors group-hover:bg-booknook-accent">
             <BookMarked className="h-4 w-4" />
           </div>
           <div className="flex flex-col">
-            <span className="font-serif text-xl tracking-tight text-[#292820] leading-none">
+            <span className="font-serif text-xl tracking-tight text-booknook-text leading-none">
               BookNook
             </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase text-[#987A50] font-medium mt-0.5">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-booknook-accent font-medium mt-0.5">
               Library & Shelves
             </span>
           </div>
@@ -91,8 +91,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative text-xs tracking-wider uppercase font-medium transition-colors py-1 ${
                   isActive
-                    ? "text-[#292820] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-[#987A50]"
-                    : "text-[#292820]/70 hover:text-[#987A50]"
+                    ? "text-booknook-text font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-booknook-accent"
+                    : "text-booknook-text/70 hover:text-booknook-accent"
                 }`}
               >
                 {link.name}
@@ -104,44 +104,44 @@ export default function Navbar() {
         {/* Auth CTA / User Avatar */}
         <div className="hidden items-center gap-3 md:flex">
           {isPending ? (
-            <div className="h-8 w-20 animate-pulse rounded-sm bg-[#EAE2D5]" />
+            <div className="h-8 w-20 animate-pulse rounded-sm bg-booknook-secondary" />
           ) : session?.user ? (
             <DropdownMenu>
               <DropdownMenuTrigger
                 aria-label="User account menu"
-                className="rounded-full outline-none focus:ring-2 focus:ring-[#987A50] focus:ring-offset-2 cursor-pointer"
+                className="rounded-full outline-none focus:ring-2 focus:ring-booknook-accent focus:ring-offset-2 cursor-pointer"
               >
-                <Avatar className="h-9 w-9 cursor-pointer border border-[#E5DED2]">
+                <Avatar className="h-9 w-9 cursor-pointer border border-booknook-border">
                   <AvatarImage
                     src={session.user.image || ""}
                     alt={session.user.name || "User"}
                   />
-                  <AvatarFallback className="bg-[#EAE2D5] text-xs font-serif font-medium text-[#292820]">
+                  <AvatarFallback className="bg-booknook-secondary text-xs font-serif font-medium text-booknook-text">
                     {getInitials(session.user.name)}
                   </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                className="w-56 p-2 shadow-lg bg-[#FFFFFF] border border-[#E5DED2] rounded-sm"
+                className="w-56 p-2 shadow-lg bg-booknook-white border border-booknook-border rounded-sm"
               >
                 <div className="px-2 py-1.5">
-                  <p className="font-serif text-sm font-medium text-[#292820]">
+                  <p className="font-serif text-sm font-medium text-booknook-text">
                     {session.user.name || "Reader"}
                   </p>
-                  <p className="truncate text-xs text-[#292820]/60 mt-0.5">
+                  <p className="truncate text-xs text-booknook-text/60 mt-0.5">
                     {session.user.email}
                   </p>
                 </div>
-                <DropdownMenuSeparator className="bg-[#E5DED2]" />
+                <DropdownMenuSeparator className="bg-booknook-border" />
                 <DropdownMenuItem
                   onClick={() => router.push("/profile")}
-                  className="cursor-pointer text-xs uppercase tracking-wider text-[#292820] hover:bg-[#EAE2D5]/50 focus:bg-[#EAE2D5]/50 rounded-xs py-2"
+                  className="cursor-pointer text-xs uppercase tracking-wider text-booknook-text hover:bg-booknook-secondary/50 focus:bg-booknook-secondary/50 rounded-xs py-2"
                 >
-                  <User className="mr-2 h-3.5 w-3.5 text-[#987A50]" />
+                  <User className="mr-2 h-3.5 w-3.5 text-booknook-accent" />
                   <span>My Profile</span>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-[#E5DED2]" />
+                <DropdownMenuSeparator className="bg-booknook-border" />
                 <DropdownMenuItem
                   onClick={handleLogout}
                   className="cursor-pointer text-xs uppercase tracking-wider text-red-700 hover:bg-red-50 focus:bg-red-50 rounded-xs py-2"
@@ -156,13 +156,13 @@ export default function Navbar() {
               <Link href="/login">
                 <Button
                   variant="ghost"
-                  className="text-xs tracking-wider uppercase text-[#292820] hover:bg-[#EAE2D5]/60 hover:text-[#292820] px-3 py-1.5 rounded-sm"
+                  className="text-xs tracking-wider uppercase text-booknook-text hover:bg-booknook-secondary/60 hover:text-booknook-text px-3 py-1.5 rounded-sm"
                 >
                   Sign In
                 </Button>
               </Link>
               <Link href="/register">
-                <Button className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] text-xs tracking-wider uppercase px-4 py-1.5 rounded-sm transition-colors shadow-xs">
+                <Button className="bg-booknook-text text-booknook-bg hover:bg-booknook-accent text-xs tracking-wider uppercase px-4 py-1.5 rounded-sm transition-colors shadow-xs">
                   Join Library
                 </Button>
               </Link>
@@ -174,19 +174,19 @@ export default function Navbar() {
         <div className="flex md:hidden">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger
-              className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-[#292820] hover:bg-[#EAE2D5]/60 border border-[#E5DED2]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-booknook-text hover:bg-booknook-secondary/60 border border-booknook-border"
               aria-label="Open navigation menu"
             >
               <Menu className="h-4 w-4" />
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-72 sm:w-80 max-w-[85vw] bg-[#F7F4ED] border-l border-[#E5DED2] p-6 flex flex-col justify-between"
+              className="w-72 sm:w-80 max-w-[85vw] bg-booknook-bg border-l border-booknook-border p-6 flex flex-col justify-between"
             >
               <div>
                 <SheetHeader className="text-left mb-8">
-                  <SheetTitle className="flex items-center gap-2.5 font-serif text-lg text-[#292820]">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-[#292820] text-[#F7F4ED]">
+                  <SheetTitle className="flex items-center gap-2.5 font-serif text-lg text-booknook-text">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-booknook-text text-booknook-bg">
                       <BookMarked className="h-3.5 w-3.5" />
                     </div>
                     BookNook
@@ -201,10 +201,10 @@ export default function Navbar() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
-                        className={`text-xs uppercase tracking-widest py-2.5 border-b border-[#E5DED2]/50 transition-colors ${
+                        className={`text-xs uppercase tracking-widest py-2.5 border-b border-booknook-border/50 transition-colors ${
                           isActive
-                            ? "text-[#292820] font-semibold"
-                            : "text-[#292820]/70 hover:text-[#987A50]"
+                            ? "text-booknook-text font-semibold"
+                            : "text-booknook-text/70 hover:text-booknook-accent"
                         }`}
                       >
                         {link.name}
@@ -214,21 +214,21 @@ export default function Navbar() {
                 </nav>
               </div>
 
-              <div className="border-t border-[#E5DED2] pt-6">
+              <div className="border-t border-booknook-border pt-6">
                 {session?.user ? (
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <Avatar className="h-9 w-9 border border-[#E5DED2]">
+                      <Avatar className="h-9 w-9 border border-booknook-border">
                         <AvatarImage src={session.user.image || ""} />
-                        <AvatarFallback className="bg-[#EAE2D5] text-xs font-serif text-[#292820]">
+                        <AvatarFallback className="bg-booknook-secondary text-xs font-serif text-booknook-text">
                           {getInitials(session.user.name)}
                         </AvatarFallback>
                       </Avatar>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate font-serif text-sm font-medium text-[#292820]">
+                        <p className="truncate font-serif text-sm font-medium text-booknook-text">
                           {session.user.name}
                         </p>
-                        <p className="truncate text-xs text-[#292820]/60">
+                        <p className="truncate text-xs text-booknook-text/60">
                           {session.user.email}
                         </p>
                       </div>
@@ -238,7 +238,7 @@ export default function Navbar() {
                       <Link
                         href="/profile"
                         onClick={() => setMobileOpen(false)}
-                        className="text-xs uppercase tracking-wider py-1.5 text-[#292820] hover:text-[#987A50]"
+                        className="text-xs uppercase tracking-wider py-1.5 text-booknook-text hover:text-booknook-accent"
                       >
                         My Profile
                       </Link>
@@ -258,13 +258,13 @@ export default function Navbar() {
                     <Link href="/login" onClick={() => setMobileOpen(false)}>
                       <Button
                         variant="outline"
-                        className="w-full border-[#E5DED2] bg-white text-xs uppercase tracking-wider text-[#292820] rounded-sm py-2"
+                        className="w-full border-booknook-border bg-booknook-white text-xs uppercase tracking-wider text-booknook-text rounded-sm py-2"
                       >
                         Sign In
                       </Button>
                     </Link>
                     <Link href="/register" onClick={() => setMobileOpen(false)}>
-                      <Button className="w-full bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] text-xs uppercase tracking-wider rounded-sm py-2 shadow-xs">
+                      <Button className="w-full bg-booknook-text text-booknook-bg hover:bg-booknook-accent text-xs uppercase tracking-wider rounded-sm py-2 shadow-xs">
                         Join Library
                       </Button>
                     </Link>

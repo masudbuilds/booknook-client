@@ -93,22 +93,22 @@ export default function NewArrivals() {
   return (
     <section className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-b border-[#E5DED2] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-b border-booknook-border pb-6">
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#987A50]">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-booknook-accent">
             Fresh Off The Shelves
           </span>
-          <h2 className="mt-1 font-serif text-3xl sm:text-4xl text-[#292820] font-normal tracking-tight">
+          <h2 className="mt-1 font-serif text-3xl sm:text-4xl text-booknook-text font-normal tracking-tight">
             New Arrivals
           </h2>
-          <p className="mt-1 text-xs sm:text-sm text-[#292820]/70 font-light">
+          <p className="mt-1 text-xs sm:text-sm text-booknook-text/70 font-light">
             Discover the latest titles generously shared by our reading community.
           </p>
         </div>
 
         <Link
           href="/books"
-          className="group inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-[#292820] hover:text-[#987A50] transition-colors pb-1 border-b border-[#292820]/40 hover:border-[#987A50] w-fit"
+          className="group inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-booknook-text hover:text-booknook-accent transition-colors pb-1 border-b border-booknook-text/40 hover:border-booknook-accent w-fit"
         >
           <span>Explore All Books</span>
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -121,13 +121,13 @@ export default function NewArrivals() {
           {[1, 2, 3, 4, 5, 6].map((item) => (
             <div
               key={item}
-              className="flex h-full animate-pulse flex-col overflow-hidden rounded-sm border border-[#E5DED2] bg-white"
+              className="flex h-full animate-pulse flex-col overflow-hidden rounded-sm border border-booknook-border bg-booknook-white"
             >
-              <div className="aspect-[3/4] w-full bg-[#EAE2D5]/50" />
+              <div className="aspect-[3/4] w-full bg-booknook-secondary/50" />
               <div className="space-y-3 p-5">
-                <div className="h-4 w-3/4 rounded bg-[#EAE2D5]/60" />
-                <div className="h-3 w-1/2 rounded bg-[#EAE2D5]/40" />
-                <div className="mt-4 h-8 w-full rounded bg-[#EAE2D5]/30" />
+                <div className="h-4 w-3/4 rounded bg-booknook-secondary/60" />
+                <div className="h-3 w-1/2 rounded bg-booknook-secondary/40" />
+                <div className="mt-4 h-8 w-full rounded bg-booknook-secondary/30" />
               </div>
             </div>
           ))}
@@ -139,22 +139,22 @@ export default function NewArrivals() {
         <div
           role="alert"
           aria-live="polite"
-          className="flex flex-col items-center justify-center rounded-sm border border-[#E5DED2] bg-white p-12 text-center shadow-xs"
+          className="flex flex-col items-center justify-center rounded-sm border border-booknook-border bg-booknook-white p-12 text-center shadow-xs"
         >
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#EAE2D5]/40 text-[#987A50] mb-2">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-booknook-secondary/40 text-booknook-accent mb-2">
             <BookOpen className="h-6 w-6" />
           </div>
-          <h3 className="mt-2 font-serif text-lg font-normal text-[#292820]">
+          <h3 className="mt-2 font-serif text-lg font-normal text-booknook-text">
             Could not load new arrivals
           </h3>
-          <p className="mt-1 max-w-sm text-xs text-[#292820]/60 font-light leading-relaxed">
+          <p className="mt-1 max-w-sm text-xs text-booknook-text/60 font-light leading-relaxed">
             {error}
           </p>
           <Button
             onClick={() => fetchBooks(true)}
             variant="outline"
             size="sm"
-            className="mt-5 border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all rounded-sm text-xs uppercase tracking-wider"
+            className="mt-5 border-booknook-border text-booknook-text hover:bg-booknook-secondary active:scale-[0.98] transition-all rounded-sm text-xs uppercase tracking-wider"
           >
             <RefreshCw className="mr-1.5 h-3.5 w-3.5" />
             Try Again
@@ -167,21 +167,21 @@ export default function NewArrivals() {
         <div
           role="status"
           aria-live="polite"
-          className="flex flex-col items-center justify-center rounded-sm border border-dashed border-[#E5DED2] bg-white/60 p-12 text-center"
+          className="flex flex-col items-center justify-center rounded-sm border border-dashed border-booknook-border bg-booknook-white/60 p-12 text-center"
         >
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#EAE2D5]/50 text-[#987A50] mb-2">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-booknook-secondary/50 text-booknook-accent mb-2">
             <BookOpen className="h-6 w-6" />
           </div>
-          <h3 className="mt-2 font-serif text-lg font-normal text-[#292820]">
+          <h3 className="mt-2 font-serif text-lg font-normal text-booknook-text">
             No books found
           </h3>
-          <p className="mt-1 max-w-sm text-xs text-[#292820]/60 font-light leading-relaxed">
+          <p className="mt-1 max-w-sm text-xs text-booknook-text/60 font-light leading-relaxed">
             Our catalog is currently quiet. Be the first to share a favorite title with fellow community readers!
           </p>
           <Link href="/add-book" className="mt-5">
             <Button
               size="sm"
-              className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-all rounded-sm text-xs uppercase tracking-wider shadow-xs"
+              className="bg-booknook-text text-booknook-bg hover:bg-booknook-accent active:scale-[0.98] transition-all rounded-sm text-xs uppercase tracking-wider shadow-xs"
             >
               Share a Title
             </Button>
