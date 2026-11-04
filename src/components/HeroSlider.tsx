@@ -26,8 +26,8 @@ const slides: SlideData[] = [
     title: "Discover Your Next Great Literary Journey",
     description:
       "Explore a curated shelf of community-shared books. From timeless classics to fresh contemporary releases, your next favorite story is waiting.",
-    accent: "#C86244",
-    bgGradient: "from-[#1C3F3A] to-[#122A26]",
+    accent: "#987A50",
+    bgGradient: "from-[#292820] to-[#1a1914]",
   },
   {
     id: 2,
@@ -35,8 +35,8 @@ const slides: SlideData[] = [
     title: "Borrow for Free, Read at Your Own Leisure",
     description:
       "Check out available titles with a single click. Keep track of your due dates and return books smoothly whenever you finish.",
-    accent: "#E28743",
-    bgGradient: "from-[#234E45] to-[#16332D]",
+    accent: "#987A50",
+    bgGradient: "from-[#333128] to-[#1e1d17]",
   },
   {
     id: 3,
@@ -44,8 +44,8 @@ const slides: SlideData[] = [
     title: "Share Beloved Stories with Fellow Readers",
     description:
       "Have a book that touched your heart? Add it to the BookNook library so another reader in the community can experience the magic.",
-    accent: "#8FBC8F",
-    bgGradient: "from-[#1A3732] to-[#0E201D]",
+    accent: "#987A50",
+    bgGradient: "from-[#292820] to-[#171612]",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function HeroSlider() {
                   <Link href="/books">
                     <Button
                       size="lg"
-                      className="group bg-[#C86244] text-white hover:bg-[#B35338] shadow-md transition-all duration-200"
+                      className="group bg-[#987A50] text-[#F7F4ED] hover:bg-[#846942] shadow-md transition-all duration-200"
                     >
                       <BookOpen className="mr-2 h-4 w-4" />
                       Browse Books

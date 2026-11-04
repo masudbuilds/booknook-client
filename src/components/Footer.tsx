@@ -1,95 +1,170 @@
 import Link from "next/link";
-import { BookOpen, Mail, MapPin, Phone } from "lucide-react";
+import { BookMarked, Mail, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-stone-200/80 bg-[#F6F3EB] text-stone-700">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1C3F3A] text-amber-50">
-                <BookOpen className="h-5 w-5" />
+    <footer className="border-t border-[#E5DED2] bg-[#EAE2D5] text-[#292820]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-4 space-y-4">
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-[#292820] text-[#F7F4ED]">
+                <BookMarked className="h-4 w-4" />
               </div>
-              <span className="font-serif text-xl font-bold tracking-tight text-[#1C3F3A]">
+              <span className="font-serif text-2xl tracking-tight text-[#292820]">
                 BookNook
               </span>
             </Link>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-stone-600">
-              A community library crafted for passionate readers. Discover captivating stories,
-              borrow titles for your quiet reading hours, and share your personal favorites with fellow book lovers.
+            <p className="max-w-sm text-xs leading-relaxed text-[#292820]/75 font-light">
+              An independent community lending library dedicated to the craft of reading, mindful borrowing, and sharing cherished literature.
             </p>
+            <div className="pt-2 flex items-center gap-2 text-xs text-[#987A50] font-medium tracking-wider uppercase">
+              <span>Curated with Care</span>
+              <span>•</span>
+              <span>Est. 2026</span>
+            </div>
           </div>
 
-          <div>
-            <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-[#1C3F3A]">
-              Contact Us
-            </h3>
-            <ul className="mt-4 space-y-2.5 text-sm text-stone-600">
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-[#C86244] shrink-0" />
-                <span>42 Library Lane, Book District</span>
+          {/* Quick Links */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#987A50]">
+              Quick Links
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link
+                  href="/"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  Home
+                </Link>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#C86244] shrink-0" />
-                <span>+1 (800) 266-5665</span>
+              <li>
+                <Link
+                  href="/books"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  All Books
+                </Link>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[#C86244] shrink-0" />
-                <span>support@booknook.library</span>
+              <li>
+                <Link
+                  href="/add-book"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  Add a Book
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/my-books"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  My Books
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/my-borrows"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  My Borrowed Books
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-serif text-sm font-semibold uppercase tracking-wider text-[#1C3F3A]">
-              Connect
-            </h3>
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-stone-200/80 text-stone-700 transition-colors hover:bg-[#1C3F3A] hover:text-white"
-              >
-                <svg
-                  className="h-4 w-4 fill-current"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+          {/* Explore Shelves */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#987A50]">
+              Explore
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link
+                  href="/books"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
                 >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                  />
-                </svg>
-              </a>
+                  Fiction & Literature
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/books"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  Science & Technology
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/books"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  History & Biographies
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/books"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  Kids & Illustrated
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/books"
+                  className="text-[#292820]/80 hover:text-[#987A50] transition-colors"
+                >
+                  Art, Essays & Others
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="X (formerly Twitter)"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-stone-200/80 text-stone-700 transition-colors hover:bg-[#1C3F3A] hover:text-white"
-              >
-                <svg
-                  className="h-4 w-4 fill-current"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-            </div>
-            <p className="mt-4 text-xs text-stone-500">
-              Open Monday to Saturday, 9:00 AM – 8:00 PM.
+          {/* Contact */}
+          <div className="lg:col-span-4 space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#987A50]">
+              Contact & Hours
+            </h4>
+            <ul className="space-y-2.5 text-xs text-[#292820]/80">
+              <li className="flex items-start gap-2.5">
+                <MapPin className="h-4 w-4 text-[#987A50] shrink-0 mt-0.5" />
+                <span>42 Library Lane, Book District, Reading Quarter</span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="h-4 w-4 text-[#987A50] shrink-0" />
+                <span>support@booknook.library</span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Phone className="h-4 w-4 text-[#987A50] shrink-0" />
+                <span>+1 (800) 266-5665</span>
+              </li>
+            </ul>
+            <p className="pt-2 text-[11px] text-[#292820]/60 font-light">
+              Library Reading Room: Monday through Saturday, 9:00 AM – 8:00 PM.
             </p>
           </div>
         </div>
 
-        <div className="mt-8 border-t border-stone-200 pt-6 text-center text-xs text-stone-500">
+        {/* Bottom bar */}
+        <div className="mt-12 border-t border-[#E5DED2] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#292820]/60 text-center sm:text-left">
           <p>© {new Date().getFullYear()} BookNook. All rights reserved. Read, borrow, and inspire.</p>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <Link href="/books" className="hover:text-[#292820] transition-colors">
+              Library Catalog
+            </Link>
+            <span>•</span>
+            <Link href="/privacy" className="hover:text-[#292820] transition-colors">
+              Privacy Policy
+            </Link>
+            <span>•</span>
+            <Link href="/terms" className="hover:text-[#292820] transition-colors">
+              Terms of Borrowing
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

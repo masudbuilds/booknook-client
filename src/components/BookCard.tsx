@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { BookOpen, Eye, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 
 export interface Book {
   _id?: string;
@@ -22,87 +20,94 @@ interface BookCardProps {
   book: Book;
 }
 
-const categoryStyles: Record<string, string> = {
-  Fiction: "bg-emerald-100 text-emerald-800 border-emerald-200",
-  Science: "bg-blue-100 text-blue-800 border-blue-200",
-  History: "bg-amber-100 text-amber-800 border-amber-200",
-  Kids: "bg-purple-100 text-purple-800 border-purple-200",
-  Others: "bg-stone-100 text-stone-800 border-stone-200",
-};
-
 export default function BookCard({ book }: BookCardProps) {
   const [imageError, setImageError] = useState(false);
   const bookId = book._id || book.id || "";
-  const categoryClass = categoryStyles[book.category] || categoryStyles.Others;
+  const isAvailable = (book.availableCopies ?? 1) > 0;
 
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-stone-200/90 bg-[#FDFBF7] shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
-      <div className="relative aspect-3/4 w-full overflow-hidden bg-stone-100">
+    <article className="group flex h-full flex-col overflow-hidden rounded-sm border border-[#E5DED2] bg-white transition-all duration-300 hover:border-[#987A50] hover:-translate-y-0.5 hover:shadow-md focus-within:border-[#987A50] focus-within:ring-2 focus-within:ring-[#987A50]/40">
+      {/* Cover image container with editorial book spine shadow */}
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#EAE2D5]/40 border-b border-[#E5DED2] after:absolute after:inset-y-0 after:left-0 after:w-2.5 after:bg-gradient-to-r after:from-black/20 after:to-transparent after:pointer-events-none">
         {!imageError && book.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={book.image}
-            alt={book.title}
+            alt={`Cover of ${book.title}`}
             onError={() => setImageError(true)}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             loading="lazy"
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-stone-100 p-4 text-stone-400">
-            <BookOpen className="h-10 w-10 text-stone-300" />
-            <span className="text-xs font-medium text-stone-400">No cover image</span>
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-6 text-[#292820]/40">
+            <BookOpen className="h-10 w-10 text-[#987A50]/40" />
+            <span className="text-xs uppercase tracking-wider font-light">No Cover</span>
           </div>
         )}
 
-        <div className="absolute top-3 left-3">
-          <Badge
-            variant="outline"
-            className={`border px-2.5 py-0.5 text-xs font-semibold backdrop-blur-sm shadow-xs ${categoryClass}`}
-          >
+        {/* Top badges */}
+        <div className="absolute top-3 left-3 max-w-[55%] z-10">
+          <span className="inline-block max-w-full truncate rounded-xs bg-[#F7F4ED]/95 backdrop-blur-xs px-2.5 py-0.5 text-[10px] uppercase tracking-wider font-medium text-[#292820] border border-[#E5DED2] shadow-2xs">
             {book.category}
-          </Badge>
+          </span>
         </div>
 
         {book.availableCopies !== undefined && (
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-3 right-3 shrink-0 z-10">
             <span
-              className={`rounded-full px-2 py-0.5 text-[11px] font-semibold tracking-wide backdrop-blur-sm shadow-xs ${
-                book.availableCopies > 0
-                  ? "bg-emerald-900/80 text-emerald-100"
-                  : "bg-red-900/80 text-red-100"
+              className={`inline-flex items-center gap-1.5 rounded-xs px-2 py-0.5 text-[10px] uppercase tracking-wider font-medium backdrop-blur-xs border shadow-2xs ${
+                isAvailable
+                  ? "bg-[#F7F4ED]/95 text-[#292820] border-[#E5DED2]"
+                  : "bg-red-50/95 text-red-800 border-red-200"
               }`}
             >
-              {book.availableCopies > 0 ? `${book.availableCopies} available` : "Unavailable"}
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  isAvailable ? "bg-[#987A50]" : "bg-red-500"
+                }`}
+              />
+              {isAvailable ? `${book.availableCopies} in stock` : "On loan"}
             </span>
           </div>
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-4">
+      {/* Book details */}
+      <div className="flex flex-1 flex-col p-5">
         <h3
           title={book.title}
-          className="line-clamp-2 font-serif text-base font-bold text-stone-900 leading-snug group-hover:text-[#1C3F3A] transition-colors"
+          className="line-clamp-1 font-serif text-lg font-normal text-[#292820] group-hover:text-[#987A50] transition-colors"
         >
-          {book.title}
+          <Link
+            href={`/books/${bookId}`}
+            className="hover:underline underline-offset-2 outline-none focus-visible:ring-1 focus-visible:ring-[#987A50]"
+          >
+            {book.title}
+          </Link>
         </h3>
 
-        <div className="mt-1.5 flex items-center gap-1.5 text-xs text-stone-500">
-          <User className="h-3.5 w-3.5 shrink-0 text-stone-400" />
-          <span className="truncate">{book.author}</span>
-        </div>
+        <p className="mt-1 text-xs text-[#292820]/65 font-light tracking-wide truncate">
+          By {book.author}
+        </p>
 
-        <div className="mt-auto pt-4">
-          <Link href={`/books/${bookId}`} className="block w-full">
-            <Button
-              className="w-full bg-[#1C3F3A] text-white hover:bg-[#15302C] transition-colors shadow-xs"
-              size="sm"
-            >
-              <Eye className="mr-1.5 h-3.5 w-3.5" />
-              View Details
-            </Button>
+        {book.description && (
+          <p className="mt-2.5 line-clamp-2 text-xs leading-relaxed text-[#292820]/70 font-light">
+            {book.description}
+          </p>
+        )}
+
+        {/* Action button */}
+        <div className="mt-auto pt-4 border-t border-[#E5DED2]/60">
+          <Link
+            href={`/books/${bookId}`}
+            aria-label={`View details for ${book.title} by ${book.author}`}
+            className="flex items-center justify-between text-xs uppercase tracking-widest font-medium text-[#292820] group-hover:text-[#987A50] transition-colors py-1 outline-none focus-visible:ring-1 focus-visible:ring-[#987A50] rounded-xs"
+          >
+            <span>View Details</span>
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

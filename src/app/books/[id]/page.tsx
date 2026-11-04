@@ -230,9 +230,34 @@ function BookDetailsContent() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-3">
-        <Loader2 className="h-8 w-8 animate-spin text-[#1C3F3A]" />
-        <p className="text-sm text-stone-500">Loading book details...</p>
+      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8 space-y-8 animate-pulse">
+        <div className="h-4 w-28 rounded bg-[#EAE2D5]/60" />
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 items-start">
+          <div className="md:col-span-5">
+            <div className="rounded-sm border border-[#E5DED2] bg-white p-3 shadow-xs">
+              <div className="aspect-[3/4] w-full rounded-xs bg-[#EAE2D5]/50" />
+            </div>
+          </div>
+          <div className="md:col-span-7 space-y-5">
+            <div className="flex gap-2">
+              <div className="h-6 w-24 rounded bg-[#EAE2D5]/60" />
+              <div className="h-6 w-32 rounded bg-[#EAE2D5]/40" />
+            </div>
+            <div className="h-8 w-3/4 rounded bg-[#EAE2D5]/70" />
+            <div className="h-4 w-1/3 rounded bg-[#EAE2D5]/50" />
+            <div className="rounded-sm border border-[#E5DED2] bg-white p-5 space-y-3">
+              <div className="h-4 w-full rounded bg-[#EAE2D5]/40" />
+              <div className="h-4 w-full rounded bg-[#EAE2D5]/40" />
+              <div className="h-4 w-2/3 rounded bg-[#EAE2D5]/40" />
+            </div>
+            <div className="space-y-2 pt-2">
+              <div className="h-4 w-full rounded bg-[#EAE2D5]/40" />
+              <div className="h-4 w-5/6 rounded bg-[#EAE2D5]/40" />
+              <div className="h-4 w-4/6 rounded bg-[#EAE2D5]/30" />
+            </div>
+            <div className="h-10 w-48 rounded bg-[#EAE2D5]/60 mt-4" />
+          </div>
+        </div>
       </div>
     );
   }
@@ -240,25 +265,27 @@ function BookDetailsContent() {
   if (error || !book) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <div className="rounded-2xl border border-stone-200 bg-white p-12 shadow-xs">
-          <BookOpen className="mx-auto h-12 w-12 text-stone-300" />
-          <h2 className="mt-4 font-serif text-2xl font-bold text-stone-800">
+        <div className="rounded-2xl border border-[#E5DED2] bg-[#FFFFFF] p-12 shadow-xs">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#EAE2D5]/50 text-[#987A50] mb-3">
+            <BookOpen className="h-7 w-7" />
+          </div>
+          <h2 className="mt-2 font-serif text-2xl font-bold text-[#292820]">
             Book Not Found
           </h2>
-          <p className="mt-2 text-sm text-stone-500">
-            {error || "The book you are looking for does not exist or has been removed."}
+          <p className="mt-2 text-sm text-stone-500 max-w-md mx-auto">
+            {error || "The book you are looking for does not exist or has been removed from the catalog."}
           </p>
           <div className="mt-6 flex justify-center gap-3">
             <Button
               variant="outline"
               onClick={fetchBookDetails}
-              className="border-stone-300"
+              className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
             >
               <RefreshCw className="mr-2 h-4 w-4" />
               Try Again
             </Button>
             <Link href="/books">
-              <Button className="bg-[#1C3F3A] text-white hover:bg-[#15302C]">
+              <Button className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-colors">
                 Back to All Books
               </Button>
             </Link>
@@ -285,17 +312,17 @@ function BookDetailsContent() {
       <div>
         <Link
           href="/books"
-          className="inline-flex items-center text-sm font-medium text-stone-600 hover:text-[#1C3F3A] transition-colors"
+          className="inline-flex items-center text-xs uppercase tracking-widest font-medium text-[#292820]/75 hover:text-[#987A50] transition-colors focus-visible:ring-1 focus-visible:ring-[#987A50] rounded-xs"
         >
-          <ArrowLeft className="mr-1.5 h-4 w-4" />
+          <ArrowLeft className="mr-1.5 h-3.5 w-3.5" />
           Back to Books
         </Link>
       </div>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-12 items-start">
         <div className="md:col-span-5">
-          <div className="overflow-hidden rounded-2xl border border-stone-200/90 bg-white p-3 shadow-md">
-            <div className="relative aspect-3/4 w-full overflow-hidden rounded-xl bg-stone-100">
+          <div className="overflow-hidden rounded-sm border border-[#E5DED2] bg-white p-3 shadow-xs">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xs bg-[#EAE2D5]/40 border border-[#E5DED2] after:absolute after:inset-y-0 after:left-0 after:w-3.5 after:bg-gradient-to-r after:from-black/20 after:to-transparent after:pointer-events-none">
               {!imageError && book.image ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -305,9 +332,9 @@ function BookDetailsContent() {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-stone-100 p-6 text-stone-400">
-                  <BookOpen className="h-12 w-12 text-stone-300" />
-                  <span className="text-xs font-medium text-stone-400">No cover image available</span>
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#EAE2D5]/30 p-6 text-[#292820]/40">
+                  <BookOpen className="h-12 w-12 text-[#987A50]/40" />
+                  <span className="text-xs uppercase tracking-wider font-light">No cover image available</span>
                 </div>
               )}
             </div>
@@ -317,53 +344,53 @@ function BookDetailsContent() {
         <div className="md:col-span-7 space-y-6">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 font-semibold px-3 py-1">
+              <span className="rounded-xs bg-[#EAE2D5]/70 text-[#292820] border border-[#E5DED2] text-[11px] uppercase tracking-wider font-medium px-3 py-1">
                 {book.category}
-              </Badge>
+              </span>
               <span
                 className={cn(
-                  "rounded-full px-3 py-0.5 text-xs font-semibold",
+                  "rounded-xs px-3 py-1 text-[11px] uppercase tracking-wider font-medium border",
                   isAvailable
-                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                    : "bg-red-50 text-red-700 border border-red-200"
+                    ? "bg-[#F7F4ED] text-[#292820] border-[#E5DED2]"
+                    : "bg-red-50 text-red-700 border-red-200"
                 )}
               >
-                {isAvailable ? `${book.availableCopies} Copies Available` : "Not Available"}
+                {isAvailable ? `${book.availableCopies} Copies in Stock` : "Currently On Loan"}
               </span>
             </div>
 
-            <h1 className="font-serif text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl leading-tight">
+            <h1 className="font-serif text-3xl font-normal tracking-tight text-[#292820] sm:text-4xl leading-tight">
               {book.title}
             </h1>
 
-            <div className="flex items-center gap-2 text-stone-600">
-              <User className="h-4 w-4 text-stone-400" />
-              <span className="text-base font-medium">By {book.author}</span>
+            <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-[#292820]/70">
+              <User className="h-3.5 w-3.5 text-[#987A50]" />
+              <span className="font-medium">By {book.author}</span>
             </div>
           </div>
 
-          <Card className="border-stone-200 bg-white shadow-xs">
-            <CardContent className="p-4 space-y-3 text-xs sm:text-sm">
-              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
-                <span className="flex items-center gap-1.5 text-stone-500">
-                  <Layers className="h-4 w-4 text-stone-400" />
+          <Card className="border-[#E5DED2] bg-white shadow-xs rounded-sm">
+            <CardContent className="p-5 space-y-3 text-xs sm:text-sm">
+              <div className="flex items-center justify-between border-b border-[#E5DED2]/60 pb-2.5">
+                <span className="flex items-center gap-1.5 text-[#292820]/70 text-xs">
+                  <Layers className="h-3.5 w-3.5 text-[#987A50]" />
                   Total Copies in Library
                 </span>
-                <span className="font-semibold text-stone-900">{book.totalCopies}</span>
+                <span className="font-medium text-[#292820] text-xs">{book.totalCopies}</span>
               </div>
-              <div className="flex items-center justify-between border-b border-stone-100 pb-2">
-                <span className="flex items-center gap-1.5 text-stone-500">
-                  <Calendar className="h-4 w-4 text-stone-400" />
+              <div className="flex items-center justify-between border-b border-[#E5DED2]/60 pb-2.5">
+                <span className="flex items-center gap-1.5 text-[#292820]/70 text-xs">
+                  <Calendar className="h-3.5 w-3.5 text-[#987A50]" />
                   Added to Catalog
                 </span>
-                <span className="font-semibold text-stone-900">{formattedDate}</span>
+                <span className="font-medium text-[#292820] text-xs">{formattedDate}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-stone-500">
-                  <User className="h-4 w-4 text-stone-400" />
+                <span className="flex items-center gap-1.5 text-[#292820]/70 text-xs">
+                  <User className="h-3.5 w-3.5 text-[#987A50]" />
                   Contributed By
                 </span>
-                <span className="font-semibold text-stone-900">
+                <span className="font-medium text-[#292820] text-xs">
                   {book.userName || "Community Reader"}
                 </span>
               </div>
@@ -371,13 +398,13 @@ function BookDetailsContent() {
           </Card>
 
           <div className="space-y-2">
-            <h3 className="font-serif text-lg font-bold text-[#1C3F3A]">Synopsis & Description</h3>
-            <p className="whitespace-pre-line text-sm leading-relaxed text-stone-600">
+            <h3 className="font-serif text-lg font-normal text-[#292820]">Synopsis & Overview</h3>
+            <p className="whitespace-pre-line text-xs sm:text-sm leading-relaxed text-[#292820]/75 font-light">
               {book.description}
             </p>
           </div>
 
-          <div className="pt-4 border-t border-stone-200">
+          <div className="pt-4 border-t border-[#E5DED2]">
             <Button
               onClick={() => {
                 setDateError(null);
@@ -387,16 +414,16 @@ function BookDetailsContent() {
               disabled={!isAvailable || borrowing}
               size="lg"
               className={cn(
-                "w-full sm:w-auto font-medium transition-all shadow-xs",
+                "w-full sm:w-auto text-xs uppercase tracking-widest font-medium rounded-sm transition-all shadow-xs px-6 py-2.5 active:scale-[0.98]",
                 isAvailable
-                  ? "bg-[#1C3F3A] text-white hover:bg-[#15302C]"
-                  : "bg-stone-200 text-stone-500 cursor-not-allowed hover:bg-stone-200"
+                  ? "bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50]"
+                  : "bg-[#EAE2D5] text-[#292820]/40 cursor-not-allowed hover:bg-[#EAE2D5]"
               )}
             >
               <BookOpen className="mr-2 h-4 w-4" />
-              {isAvailable ? "Borrow This Book" : "Not Available"}
+              {isAvailable ? "Borrow This Book" : "Currently Unavailable"}
             </Button>
-            <p className="mt-2 text-xs text-stone-500">
+            <p className="mt-2 text-xs text-[#292820]/60 font-light">
               {isAvailable
                 ? "Borrowing is free for all registered library members. Select a return date to proceed."
                 : "All copies of this book are currently on loan. Please check back later."}
@@ -416,8 +443,8 @@ function BookDetailsContent() {
           </DialogHeader>
 
           {/* Book Summary Card */}
-          <div className="flex items-center gap-3 rounded-lg border border-stone-200 bg-stone-50/80 p-3">
-            <div className="relative aspect-3/4 w-12 shrink-0 overflow-hidden rounded bg-stone-200">
+          <div className="flex items-center gap-3 rounded-lg border border-[#E5DED2] bg-[#EAE2D5]/30 p-3">
+            <div className="relative aspect-3/4 w-12 shrink-0 overflow-hidden rounded bg-[#EAE2D5]/50 border border-[#E5DED2]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={book.image}
@@ -426,15 +453,15 @@ function BookDetailsContent() {
               />
             </div>
             <div className="min-w-0 flex-1">
-              <h4 className="font-serif text-sm font-bold text-stone-900 truncate">
+              <h4 className="font-serif text-sm font-bold text-[#292820] truncate">
                 {book.title}
               </h4>
               <p className="text-xs text-stone-500 truncate">By {book.author}</p>
               <div className="mt-1 flex items-center gap-2">
-                <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-stone-300">
+                <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-[#E5DED2] text-[#292820]">
                   {book.category}
                 </Badge>
-                <span className="text-[11px] font-medium text-emerald-700">
+                <span className="text-[11px] font-medium text-[#987A50]">
                   {book.availableCopies} available
                 </span>
               </div>
@@ -450,7 +477,7 @@ function BookDetailsContent() {
           >
             {/* Read-only User Name */}
             <div className="space-y-1.5">
-              <Label htmlFor="borrowerName" className="text-xs font-semibold text-stone-700">
+              <Label htmlFor="borrowerName" className="text-xs font-semibold text-[#292820]">
                 Borrower Name
               </Label>
               <Input
@@ -458,13 +485,13 @@ function BookDetailsContent() {
                 value={borrowerName}
                 readOnly
                 disabled
-                className="bg-stone-100 text-stone-600 cursor-not-allowed border-stone-200 text-sm"
+                className="bg-[#EAE2D5]/25 text-[#292820] cursor-not-allowed border-[#E5DED2] text-sm"
               />
             </div>
 
             {/* Read-only User Email */}
             <div className="space-y-1.5">
-              <Label htmlFor="borrowerEmail" className="text-xs font-semibold text-stone-700">
+              <Label htmlFor="borrowerEmail" className="text-xs font-semibold text-[#292820]">
                 Borrower Email
               </Label>
               <Input
@@ -472,13 +499,13 @@ function BookDetailsContent() {
                 value={borrowerEmail}
                 readOnly
                 disabled
-                className="bg-stone-100 text-stone-600 cursor-not-allowed border-stone-200 text-sm"
+                className="bg-[#EAE2D5]/25 text-[#292820] cursor-not-allowed border-[#E5DED2] text-sm"
               />
             </div>
 
             {/* Read-only Borrow Date */}
             <div className="space-y-1.5">
-              <Label htmlFor="borrowDate" className="text-xs font-semibold text-stone-700">
+              <Label htmlFor="borrowDate" className="text-xs font-semibold text-[#292820]">
                 Borrow Date
               </Label>
               <Input
@@ -487,7 +514,7 @@ function BookDetailsContent() {
                 value={todayStr}
                 readOnly
                 disabled
-                className="bg-stone-100 text-stone-600 cursor-not-allowed border-stone-200 text-sm"
+                className="bg-[#EAE2D5]/25 text-[#292820] cursor-not-allowed border-[#E5DED2] text-sm"
               />
             </div>
 
@@ -509,7 +536,7 @@ function BookDetailsContent() {
                   if (dateError) setDateError(null);
                 }}
                 className={cn(
-                  "border-stone-300 focus-visible:ring-[#1C3F3A] text-sm",
+                  "border-[#E5DED2] focus-visible:ring-[#987A50] text-sm",
                   dateError && "border-red-500 focus-visible:ring-red-500"
                 )}
                 required
@@ -528,14 +555,14 @@ function BookDetailsContent() {
                 variant="outline"
                 onClick={() => setBorrowModalOpen(false)}
                 disabled={borrowing}
-                className="border-stone-300 text-stone-700 hover:bg-stone-100"
+                className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 disabled={borrowing}
-                className="bg-[#1C3F3A] text-white hover:bg-[#15302C]"
+                className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-all"
               >
                 {borrowing ? (
                   <>

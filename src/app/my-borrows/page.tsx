@@ -218,21 +218,21 @@ function MyBorrowsContent() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 space-y-8">
       {/* Page Header */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b border-stone-200 pb-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b border-[#E5DED2] pb-6">
         <div>
-          <h1 className="font-serif text-3xl font-bold tracking-tight text-[#1C3F3A] sm:text-4xl">
+          <h1 className="font-serif text-3xl font-bold tracking-tight text-[#292820] sm:text-4xl">
             My Borrowed Books
           </h1>
           <p className="mt-1 text-sm text-stone-600">
             Track your active library loans and return books when you finish reading.
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <Badge className="bg-[#1C3F3A] text-white hover:bg-[#1C3F3A] px-3 py-1 font-medium">
+        <div className="flex flex-wrap items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+          <Badge className="bg-[#292820] text-[#F7F4ED] hover:bg-[#292820] px-3 py-1 font-medium">
             {borrows.length} {borrows.length === 1 ? "Active Loan" : "Active Loans"}
           </Badge>
           <Link href="/books">
-            <Button variant="outline" size="sm" className="border-stone-300 text-stone-700">
+            <Button variant="outline" size="sm" className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5]">
               <BookOpen className="mr-1.5 h-3.5 w-3.5" />
               Browse More
             </Button>
@@ -242,17 +242,39 @@ function MyBorrowsContent() {
 
       {/* Loading State */}
       {loading && (
-        <div className="flex min-h-[50vh] flex-col items-center justify-center gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-[#1C3F3A]" />
-          <p className="text-sm text-stone-500">Loading your borrowed books...</p>
+        <div
+          role="status"
+          aria-live="polite"
+          className="rounded-xl border border-[#E5DED2] bg-white p-6 shadow-xs animate-pulse space-y-4"
+        >
+          <div className="h-5 w-40 rounded bg-[#EAE2D5]/70" />
+          <div className="space-y-4 pt-2">
+            {[1, 2, 3].map((row) => (
+              <div key={row} className="flex items-center gap-4 border-b border-[#E5DED2]/50 pb-3">
+                <div className="aspect-[3/4] w-12 rounded bg-[#EAE2D5]/50 shrink-0" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 w-1/3 rounded bg-[#EAE2D5]/60" />
+                  <div className="h-3 w-1/5 rounded bg-[#EAE2D5]/40" />
+                </div>
+                <div className="h-4 w-24 rounded bg-[#EAE2D5]/40 hidden sm:block" />
+                <div className="h-8 w-24 rounded bg-[#EAE2D5]/50" />
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
       {/* Error State */}
       {!loading && error && (
-        <div className="rounded-2xl border border-stone-200 bg-white p-10 text-center shadow-xs">
-          <AlertCircle className="mx-auto h-12 w-12 text-red-500" />
-          <h3 className="mt-3 font-serif text-lg font-bold text-stone-900">
+        <div
+          role="alert"
+          aria-live="polite"
+          className="rounded-2xl border border-[#E5DED2] bg-white p-10 text-center shadow-xs"
+        >
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-600 mb-2">
+            <AlertCircle className="h-6 w-6" />
+          </div>
+          <h3 className="mt-2 font-serif text-lg font-bold text-[#292820]">
             Unable to load borrowed books
           </h3>
           <p className="mt-1 text-sm text-stone-500 max-w-md mx-auto">{error}</p>
@@ -260,7 +282,7 @@ function MyBorrowsContent() {
             <Button
               onClick={fetchBorrows}
               variant="outline"
-              className="border-stone-300 text-stone-700"
+              className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
             >
               <RefreshCw className="mr-2 h-4 w-4" />
               Try Again
@@ -271,11 +293,11 @@ function MyBorrowsContent() {
 
       {/* Empty State */}
       {!loading && !error && borrows.length === 0 && (
-        <div className="rounded-2xl border border-dashed border-stone-300 bg-white/60 p-12 text-center shadow-xs">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-stone-100">
-            <BookOpen className="h-8 w-8 text-stone-400" />
+        <div className="rounded-2xl border border-dashed border-[#E5DED2] bg-white/60 p-12 text-center shadow-xs">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#EAE2D5] text-[#987A50]">
+            <BookOpen className="h-8 w-8" />
           </div>
-          <h3 className="mt-4 font-serif text-2xl font-bold text-stone-800">
+          <h3 className="mt-4 font-serif text-2xl font-bold text-[#292820]">
             No Borrowed Books
           </h3>
           <p className="mx-auto mt-2 max-w-md text-sm text-stone-500">
@@ -283,7 +305,7 @@ function MyBorrowsContent() {
           </p>
           <div className="mt-6">
             <Link href="/books">
-              <Button className="bg-[#1C3F3A] text-white hover:bg-[#15302C]">
+              <Button className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] transition-colors">
                 Explore Book Catalog
               </Button>
             </Link>
@@ -295,9 +317,9 @@ function MyBorrowsContent() {
       {!loading && !error && borrows.length > 0 && (
         <>
           {/* Desktop & Tablet Table */}
-          <div className="hidden md:block overflow-hidden rounded-xl border border-stone-200 bg-white shadow-xs">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-stone-200 bg-stone-50 text-xs font-semibold text-stone-600 uppercase tracking-wider">
+          <div className="hidden md:block overflow-x-auto rounded-xl border border-[#E5DED2] bg-white shadow-xs">
+            <table className="w-full text-left text-sm min-w-[640px]">
+              <thead className="border-b border-[#E5DED2] bg-[#EAE2D5]/30 text-xs font-semibold text-stone-600 uppercase tracking-wider">
                 <tr>
                   <th scope="col" className="px-6 py-4">Book Details</th>
                   <th scope="col" className="px-6 py-4">Borrow Date</th>
@@ -306,15 +328,15 @@ function MyBorrowsContent() {
                   <th scope="col" className="px-6 py-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100">
+              <tbody className="divide-y divide-[#E5DED2]">
                 {borrows.map((record) => {
                   const status = getBorrowStatus(record.returnDate);
                   return (
-                    <tr key={record._id} className="hover:bg-stone-50/60 transition-colors">
+                    <tr key={record._id} className="hover:bg-[#EAE2D5]/20 transition-colors">
                       {/* Book Cover + Title */}
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="relative aspect-3/4 w-12 shrink-0 overflow-hidden rounded-md border border-stone-200 bg-stone-100">
+                          <div className="relative aspect-3/4 w-12 shrink-0 overflow-hidden rounded-md border border-[#E5DED2] bg-stone-100">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={record.bookImage}
@@ -325,7 +347,7 @@ function MyBorrowsContent() {
                           <div className="min-w-0">
                             <Link
                               href={`/books/${record.bookId}`}
-                              className="font-serif font-bold text-stone-900 hover:text-[#1C3F3A] transition-colors truncate block"
+                              className="font-serif font-bold text-[#292820] hover:text-[#987A50] transition-colors truncate block"
                             >
                               {record.bookTitle}
                             </Link>
@@ -346,7 +368,7 @@ function MyBorrowsContent() {
                       <td className="px-6 py-4 text-stone-600 whitespace-nowrap">
                         <div className="flex items-center gap-1.5">
                           <Clock className="h-3.5 w-3.5 text-stone-400" />
-                          <span className="font-medium text-stone-800">
+                          <span className="font-medium text-[#292820]">
                             {formatDate(record.returnDate)}
                           </span>
                         </div>
@@ -373,7 +395,7 @@ function MyBorrowsContent() {
                             setSelectedBorrow(record);
                             setReturnDialogOpen(true);
                           }}
-                          className="border-stone-300 text-stone-700 hover:bg-[#1C3F3A] hover:text-white hover:border-[#1C3F3A] transition-colors"
+                          className="border-[#E5DED2] text-[#292820] hover:bg-[#292820] hover:text-[#F7F4ED] hover:border-[#292820] active:scale-[0.98] transition-all"
                         >
                           <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
                           Return Book
@@ -393,10 +415,10 @@ function MyBorrowsContent() {
               return (
                 <div
                   key={record._id}
-                  className="overflow-hidden rounded-xl border border-stone-200 bg-white p-4 shadow-xs space-y-4"
+                  className="overflow-hidden rounded-xl border border-[#E5DED2] bg-white p-4 shadow-xs space-y-4"
                 >
                   <div className="flex gap-3">
-                    <div className="relative aspect-3/4 w-16 shrink-0 overflow-hidden rounded-md border border-stone-200 bg-stone-100">
+                    <div className="relative aspect-3/4 w-16 shrink-0 overflow-hidden rounded-md border border-[#E5DED2] bg-stone-100">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={record.bookImage}
@@ -408,7 +430,7 @@ function MyBorrowsContent() {
                       <div className="flex items-start justify-between gap-2">
                         <Link
                           href={`/books/${record.bookId}`}
-                          className="font-serif font-bold text-base text-stone-900 hover:text-[#1C3F3A] line-clamp-2"
+                          className="font-serif font-bold text-base text-[#292820] hover:text-[#987A50] line-clamp-2"
                         >
                           {record.bookTitle}
                         </Link>
@@ -425,7 +447,7 @@ function MyBorrowsContent() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 rounded-lg bg-stone-50 p-2.5 text-xs">
+                  <div className="grid grid-cols-2 gap-2 rounded-lg bg-[#EAE2D5]/30 p-2.5 text-xs">
                     <div>
                       <span className="block text-stone-400">Borrowed</span>
                       <span className="font-medium text-stone-700">
@@ -434,7 +456,7 @@ function MyBorrowsContent() {
                     </div>
                     <div>
                       <span className="block text-stone-400">Due Date</span>
-                      <span className="font-semibold text-stone-800">
+                      <span className="font-semibold text-[#292820]">
                         {formatDate(record.returnDate)}
                       </span>
                     </div>
@@ -445,7 +467,7 @@ function MyBorrowsContent() {
                       setSelectedBorrow(record);
                       setReturnDialogOpen(true);
                     }}
-                    className="w-full bg-[#1C3F3A] text-white hover:bg-[#15302C]"
+                    className="w-full bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] transition-colors"
                     size="sm"
                   >
                     <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
@@ -469,7 +491,7 @@ function MyBorrowsContent() {
           </DialogHeader>
 
           {selectedBorrow && (
-            <div className="flex items-center gap-3 rounded-lg border border-stone-200 bg-stone-50 p-3 mt-1">
+            <div className="flex items-center gap-3 rounded-lg border border-[#E5DED2] bg-[#EAE2D5]/30 p-3 mt-1">
               <div className="relative aspect-3/4 w-12 shrink-0 overflow-hidden rounded bg-stone-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -479,7 +501,7 @@ function MyBorrowsContent() {
                 />
               </div>
               <div className="min-w-0 flex-1">
-                <h4 className="font-serif text-sm font-bold text-stone-900 truncate">
+                <h4 className="font-serif text-sm font-bold text-[#292820] truncate">
                   {selectedBorrow.bookTitle}
                 </h4>
                 <p className="text-xs text-stone-500">
@@ -498,7 +520,7 @@ function MyBorrowsContent() {
               variant="outline"
               onClick={() => setReturnDialogOpen(false)}
               disabled={returning}
-              className="border-stone-300 text-stone-700"
+              className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
             >
               Cancel
             </Button>
@@ -506,7 +528,7 @@ function MyBorrowsContent() {
               type="button"
               onClick={handleConfirmReturn}
               disabled={returning}
-              className="bg-[#1C3F3A] text-white hover:bg-[#15302C]"
+              className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-all"
             >
               {returning ? (
                 <>

@@ -21,7 +21,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     return (
       <div className="flex min-h-[50vh] flex-1 items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-[#1C3F3A]" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#987A50]" />
           <p className="text-sm text-stone-500">Checking your library membership...</p>
         </div>
       </div>

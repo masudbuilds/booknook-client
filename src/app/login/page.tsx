@@ -74,13 +74,13 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md border-stone-200 bg-[#FDFBF7] shadow-sm">
+    <div className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-4 py-8 sm:py-12 sm:px-6 lg:px-8">
+      <Card className="w-full max-w-md border-[#E5DED2] bg-[#FFFFFF] shadow-md">
         <CardHeader className="space-y-1 text-center">
-          <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#1C3F3A] text-white">
+          <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#292820] text-[#F7F4ED]">
             <BookOpen className="h-5 w-5" />
           </div>
-          <CardTitle className="font-serif text-2xl font-bold text-[#1C3F3A]">
+          <CardTitle className="font-serif text-2xl font-bold text-[#292820]">
             Sign in to BookNook
           </CardTitle>
           <CardDescription className="text-stone-500">
@@ -99,7 +99,7 @@ function LoginForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="border-stone-300 bg-white"
+                className="border-[#E5DED2] bg-white focus-visible:ring-[#987A50]"
               />
             </div>
 
@@ -112,14 +112,14 @@ function LoginForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="border-stone-300 bg-white"
+                className="border-[#E5DED2] bg-white focus-visible:ring-[#987A50]"
               />
             </div>
 
             <Button
               type="submit"
               disabled={loading || googleLoading}
-              className="w-full bg-[#1C3F3A] text-white hover:bg-[#15302C]"
+              className="w-full bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-all shadow-xs"
             >
               {loading ? (
                 <>
@@ -134,10 +134,10 @@ function LoginForm() {
 
           <div className="relative my-4">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-stone-200" />
+              <span className="w-full border-t border-[#E5DED2]" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-[#FDFBF7] px-2 text-stone-400">or continue with</span>
+              <span className="bg-[#FFFFFF] px-2 text-stone-400">or continue with</span>
             </div>
           </div>
 
@@ -146,7 +146,7 @@ function LoginForm() {
             variant="outline"
             disabled={loading || googleLoading}
             onClick={handleGoogleSignIn}
-            className="w-full border-stone-300 bg-white text-stone-700 hover:bg-stone-50"
+            className="w-full border-[#E5DED2] bg-white text-[#292820] hover:bg-[#EAE2D5]/40 active:scale-[0.98] transition-all"
           >
             {googleLoading ? (
               <>
@@ -179,11 +179,11 @@ function LoginForm() {
           </Button>
         </CardContent>
 
-        <CardFooter className="justify-center border-t border-stone-200/60 pt-4 text-sm text-stone-600">
+        <CardFooter className="justify-center border-t border-[#E5DED2] pt-4 text-sm text-stone-600">
           Don&apos;t have an account?&nbsp;
           <Link
             href={`/register${callbackUrl !== "/" ? `?callbackUrl=${encodeURIComponent(callbackUrl)}` : ""}`}
-            className="font-medium text-[#C86244] hover:underline"
+            className="font-medium text-[#987A50] hover:underline"
           >
             Register here
           </Link>
@@ -198,7 +198,7 @@ export default function LoginPage() {
     <Suspense
       fallback={
         <div className="flex min-h-[50vh] items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-[#1C3F3A]" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#987A50]" />
         </div>
       }
     >

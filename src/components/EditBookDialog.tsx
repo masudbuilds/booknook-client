@@ -154,7 +154,7 @@ export default function EditBookDialog({
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-                className="bg-white"
+                className="bg-white border-[#E5DED2] focus-visible:ring-[#987A50]"
               />
             </div>
             <div className="space-y-1.5">
@@ -164,7 +164,7 @@ export default function EditBookDialog({
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
                 required
-                className="bg-white"
+                className="bg-white border-[#E5DED2] focus-visible:ring-[#987A50]"
               />
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function EditBookDialog({
                 id="edit-category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="h-8 w-full rounded-lg border border-stone-300 bg-white px-2.5 py-1 text-sm text-stone-900 outline-none focus:border-[#1C3F3A]"
+                className="h-8 w-full rounded-lg border border-[#E5DED2] bg-white px-2.5 py-1 text-sm text-[#292820] outline-none focus:border-[#987A50] focus:ring-1 focus:ring-[#987A50]"
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>
@@ -195,7 +195,7 @@ export default function EditBookDialog({
                 value={totalCopies}
                 onChange={(e) => setTotalCopies(e.target.value)}
                 required
-                className="bg-white"
+                className="bg-white border-[#E5DED2] focus-visible:ring-[#987A50]"
               />
             </div>
           </div>
@@ -208,7 +208,7 @@ export default function EditBookDialog({
               value={image}
               onChange={(e) => setImage(e.target.value)}
               required
-              className="bg-white"
+              className="bg-white border-[#E5DED2] focus-visible:ring-[#987A50]"
             />
           </div>
 
@@ -220,7 +220,7 @@ export default function EditBookDialog({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-              className="bg-white"
+              className="bg-white border-[#E5DED2] focus-visible:ring-[#987A50]"
             />
           </div>
 
@@ -230,13 +230,14 @@ export default function EditBookDialog({
               variant="outline"
               disabled={submitting}
               onClick={() => onOpenChange(false)}
+              className="border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
             >
               Cancel
             </Button>
             <Button
               type="submit"
               disabled={submitting}
-              className="bg-[#1C3F3A] text-white hover:bg-[#15302C]"
+              className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-all"
             >
               {submitting ? (
                 <>

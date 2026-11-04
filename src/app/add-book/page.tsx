@@ -132,15 +132,15 @@ function AddBookForm() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-      <Card className="border-stone-200 bg-[#FDFBF7] shadow-sm">
+      <Card className="border-[#E5DED2] bg-[#FFFFFF] shadow-sm">
         <CardHeader className="space-y-1">
-          <div className="flex items-center gap-2 text-[#C86244]">
+          <div className="flex items-center gap-2 text-[#987A50]">
             <BookOpen className="h-5 w-5" />
             <span className="text-xs font-semibold uppercase tracking-wider">
               Contribute a Book
             </span>
           </div>
-          <CardTitle className="font-serif text-2xl font-bold text-[#1C3F3A] sm:text-3xl">
+          <CardTitle className="font-serif text-2xl font-bold text-[#292820] sm:text-3xl">
             Add a New Book
           </CardTitle>
           <CardDescription className="text-stone-500">
@@ -162,7 +162,7 @@ function AddBookForm() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   required
-                  className="border-stone-300 bg-white"
+                  className="border-[#E5DED2] bg-white focus-visible:ring-[#987A50]"
                 />
               </div>
 
@@ -177,7 +177,7 @@ function AddBookForm() {
                   value={author}
                   onChange={(e) => setAuthor(e.target.value)}
                   required
-                  className="border-stone-300 bg-white"
+                  className="border-[#E5DED2] bg-white focus-visible:ring-[#987A50]"
                 />
               </div>
             </div>
@@ -191,7 +191,7 @@ function AddBookForm() {
                   id="category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="h-8 w-full rounded-lg border border-stone-300 bg-white px-2.5 py-1 text-sm text-stone-900 outline-none focus:border-[#1C3F3A] focus:ring-1 focus:ring-[#1C3F3A]"
+                  className="h-8 w-full rounded-lg border border-[#E5DED2] bg-white px-2.5 py-1 text-sm text-[#292820] outline-none focus:border-[#987A50] focus:ring-1 focus:ring-[#987A50]"
                 >
                   {categories.map((cat) => (
                     <option key={cat} value={cat}>
@@ -214,7 +214,7 @@ function AddBookForm() {
                   value={totalCopies}
                   onChange={(e) => setTotalCopies(e.target.value)}
                   required
-                  className="border-stone-300 bg-white"
+                  className="border-[#E5DED2] bg-white focus-visible:ring-[#987A50]"
                 />
               </div>
             </div>
@@ -231,12 +231,12 @@ function AddBookForm() {
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
                     required
-                    className="border-stone-300 bg-white pr-10"
+                    className="border-[#E5DED2] bg-white pr-10 focus-visible:ring-[#987A50]"
                   />
                   <ImageIcon className="absolute right-3 top-2 h-4 w-4 text-stone-400 pointer-events-none" />
                 </div>
 
-                <div className="relative">
+                <div className="relative w-full sm:w-auto">
                   <input
                     type="file"
                     id="fileUpload"
@@ -250,12 +250,12 @@ function AddBookForm() {
                     variant="outline"
                     disabled={uploadingImage}
                     onClick={() => document.getElementById("fileUpload")?.click()}
-                    className="border-stone-300 bg-white hover:bg-stone-50"
+                    className="w-full sm:w-auto border-[#E5DED2] bg-white text-[#292820] hover:bg-[#EAE2D5]"
                   >
                     {uploadingImage ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin text-[#1C3F3A]" />
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin text-[#987A50]" />
                     ) : (
-                      <Upload className="mr-2 h-4 w-4 text-[#C86244]" />
+                      <Upload className="mr-2 h-4 w-4 text-[#987A50]" />
                     )}
                     Upload to ImgBB
                   </Button>
@@ -263,15 +263,15 @@ function AddBookForm() {
               </div>
 
               {imageUrl && (
-                <div className="mt-3 flex items-center gap-3 rounded-lg border border-stone-200 bg-white p-2">
+                <div className="mt-3 flex items-center gap-3 rounded-lg border border-[#E5DED2] bg-white p-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imageUrl}
                     alt="Cover preview"
-                    className="h-16 w-12 rounded object-cover border border-stone-200"
+                    className="h-16 w-12 rounded object-cover border border-[#E5DED2] shrink-0"
                     onError={() => toast.error("Could not load preview from the provided URL")}
                   />
-                  <div className="truncate text-xs text-stone-500">
+                  <div className="min-w-0 flex-1 truncate text-xs text-stone-500">
                     <p className="font-semibold text-stone-800">Cover Preview</p>
                     <p className="truncate">{imageUrl}</p>
                   </div>
@@ -290,16 +290,16 @@ function AddBookForm() {
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
                 required
-                className="border-stone-300 bg-white"
+                className="border-[#E5DED2] bg-white focus-visible:ring-[#987A50]"
               />
             </div>
 
-            <div className="grid grid-cols-1 gap-5 rounded-lg border border-stone-200 bg-stone-50/60 p-4 sm:grid-cols-2 text-xs">
-              <div>
+            <div className="grid grid-cols-1 gap-4 sm:gap-5 rounded-lg border border-[#E5DED2] bg-[#EAE2D5]/30 p-4 sm:grid-cols-2 text-xs">
+              <div className="min-w-0">
                 <span className="font-medium text-stone-500">Submitted By:</span>
-                <p className="font-semibold text-stone-800">{session?.user?.name || "Reader"}</p>
+                <p className="font-semibold text-stone-800 truncate">{session?.user?.name || "Reader"}</p>
               </div>
-              <div>
+              <div className="min-w-0">
                 <span className="font-medium text-stone-500">User Email (Read-only):</span>
                 <p className="font-semibold text-stone-800 truncate">{session?.user?.email || "N/A"}</p>
               </div>
@@ -309,7 +309,7 @@ function AddBookForm() {
               <Button
                 type="submit"
                 disabled={submitting || uploadingImage}
-                className="w-full bg-[#1C3F3A] text-white hover:bg-[#15302C] sm:w-auto px-8"
+                className="w-full bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] sm:w-auto px-8 active:scale-[0.98] transition-all shadow-xs"
               >
                 {submitting ? (
                   <>

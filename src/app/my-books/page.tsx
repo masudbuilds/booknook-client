@@ -179,12 +179,12 @@ function MyBooksContent() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 space-y-8">
-      <div className="flex flex-col justify-between gap-4 border-b border-stone-200 pb-6 sm:flex-row sm:items-end">
+      <div className="flex flex-col justify-between gap-4 border-b border-[#E5DED2] pb-6 sm:flex-row sm:items-end">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#C86244]">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#987A50]">
             Personal Shelf
           </span>
-          <h1 className="mt-1 font-serif text-3xl font-bold tracking-tight text-[#1C3F3A] sm:text-4xl">
+          <h1 className="mt-1 font-serif text-3xl font-bold tracking-tight text-[#292820] sm:text-4xl">
             My Books
           </h1>
           <p className="mt-2 text-sm text-stone-600">
@@ -192,15 +192,15 @@ function MyBooksContent() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
           {!loading && !error && (
-            <span className="text-sm font-medium text-stone-500">
+            <span className="text-xs sm:text-sm font-medium text-stone-500">
               Total Added:{" "}
-              <span className="font-semibold text-stone-900">{books.length}</span>
+              <span className="font-semibold text-[#292820]">{books.length}</span>
             </span>
           )}
-          <Link href="/add-book">
-            <Button className="bg-[#1C3F3A] text-white hover:bg-[#15302C]">
+          <Link href="/add-book" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] transition-colors">
               <Plus className="mr-1.5 h-4 w-4" />
               Add Book
             </Button>
@@ -210,15 +210,16 @@ function MyBooksContent() {
 
       {loading && (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3].map((item) => (
+          {[1, 2, 3, 4, 5, 6].map((item) => (
             <div
               key={item}
-              className="flex h-80 animate-pulse flex-col rounded-xl border border-stone-200 bg-white p-4"
+              className="flex h-full animate-pulse flex-col overflow-hidden rounded-sm border border-[#E5DED2] bg-white"
             >
-              <div className="h-44 w-full rounded-lg bg-stone-200" />
-              <div className="mt-4 space-y-2">
-                <div className="h-4 w-3/4 rounded bg-stone-200" />
-                <div className="h-3 w-1/2 rounded bg-stone-200" />
+              <div className="aspect-[3/4] w-full bg-[#EAE2D5]/50" />
+              <div className="space-y-3 p-5">
+                <div className="h-4 w-3/4 rounded bg-[#EAE2D5]/60" />
+                <div className="h-3 w-1/2 rounded bg-[#EAE2D5]/40" />
+                <div className="mt-4 h-8 w-full rounded bg-[#EAE2D5]/30" />
               </div>
             </div>
           ))}
@@ -226,16 +227,22 @@ function MyBooksContent() {
       )}
 
       {!loading && error && (
-        <div className="flex flex-col items-center justify-center rounded-2xl border border-stone-200 bg-white p-12 text-center shadow-xs">
-          <BookOpen className="h-10 w-10 text-stone-300" />
-          <h3 className="mt-3 font-serif text-lg font-semibold text-stone-800">
+        <div
+          role="alert"
+          aria-live="polite"
+          className="flex flex-col items-center justify-center rounded-2xl border border-[#E5DED2] bg-white p-12 text-center shadow-xs"
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#EAE2D5]/40 text-[#987A50] mb-2">
+            <BookOpen className="h-6 w-6" />
+          </div>
+          <h3 className="mt-2 font-serif text-lg font-semibold text-[#292820]">
             Could not retrieve your books
           </h3>
           <p className="mt-1 max-w-sm text-sm text-stone-500">{error}</p>
           <Button
             onClick={() => fetchMyBooks(true)}
             variant="outline"
-            className="mt-4 border-stone-300"
+            className="mt-4 border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all"
           >
             <RefreshCw className="mr-2 h-4 w-4" />
             Try Again
@@ -244,18 +251,22 @@ function MyBooksContent() {
       )}
 
       {!loading && !error && books.length === 0 && (
-        <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-stone-300 bg-white/50 p-16 text-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 text-[#1C3F3A]">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#E5DED2] bg-white/60 p-16 text-center"
+        >
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#EAE2D5] text-[#987A50]">
             <BookOpen className="h-7 w-7" />
           </div>
-          <h3 className="mt-4 font-serif text-xl font-bold text-stone-900">
+          <h3 className="mt-4 font-serif text-xl font-bold text-[#292820]">
             You haven&apos;t added any books yet
           </h3>
           <p className="mt-1 max-w-sm text-sm text-stone-500">
             Share your favorite reads with the community by contributing your first book.
           </p>
           <Link href="/add-book" className="mt-6">
-            <Button className="bg-[#1C3F3A] text-white hover:bg-[#15302C]">
+            <Button className="bg-[#292820] text-[#F7F4ED] hover:bg-[#987A50] active:scale-[0.98] transition-colors shadow-xs">
               <Plus className="mr-2 h-4 w-4" />
               Add Your First Book
             </Button>
@@ -268,39 +279,42 @@ function MyBooksContent() {
           {books.map((book) => (
             <div
               key={book._id}
-              className="flex h-full flex-col overflow-hidden rounded-xl border border-stone-200/90 bg-[#FDFBF7] shadow-sm transition-all duration-200 hover:shadow-md"
+              className="group flex h-full flex-col overflow-hidden rounded-sm border border-[#E5DED2] bg-[#FFFFFF] shadow-xs transition-all duration-300 hover:border-[#987A50] hover:-translate-y-0.5 hover:shadow-md"
             >
-              <div className="relative aspect-3/4 w-full overflow-hidden bg-stone-100">
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#EAE2D5]/30 after:absolute after:inset-y-0 after:left-0 after:w-2.5 after:bg-gradient-to-r after:from-black/20 after:to-transparent after:pointer-events-none">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={book.image}
-                  alt={book.title}
-                  className="h-full w-full object-cover"
+                  alt={`Cover of ${book.title}`}
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  loading="lazy"
                 />
-                <div className="absolute top-3 left-3">
-                  <Badge variant="outline" className="bg-white/90 font-semibold text-xs border-stone-300">
+                <div className="absolute top-3 left-3 z-10 max-w-[55%]">
+                  <Badge variant="outline" className="bg-[#F7F4ED]/95 font-semibold text-xs border-[#E5DED2] text-[#292820] max-w-full truncate shadow-2xs">
                     {book.category}
                   </Badge>
                 </div>
-                <div className="absolute top-3 right-3">
-                  <span className="rounded-full bg-emerald-900/80 px-2 py-0.5 text-[11px] font-semibold text-white">
+                <div className="absolute top-3 right-3 z-10 shrink-0">
+                  <span className="rounded-full bg-[#292820]/85 px-2.5 py-0.5 text-[11px] font-medium text-[#F7F4ED] shadow-2xs">
                     {book.availableCopies} / {book.totalCopies} copies
                   </span>
                 </div>
               </div>
 
-              <div className="flex flex-1 flex-col p-4">
-                <h3 className="font-serif text-base font-bold text-stone-900 line-clamp-1">
-                  {book.title}
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="font-serif text-base font-bold text-[#292820] line-clamp-1 group-hover:text-[#987A50] transition-colors">
+                  <Link href={`/books/${book._id}`} className="hover:underline underline-offset-2">
+                    {book.title}
+                  </Link>
                 </h3>
                 <p className="text-xs text-stone-500 mt-0.5">By {book.author}</p>
                 <p className="mt-2 text-xs text-stone-600 line-clamp-2 leading-relaxed">
                   {book.description}
                 </p>
 
-                <div className="mt-auto pt-4 flex items-center gap-2 border-t border-stone-200/70">
+                <div className="mt-auto pt-4 flex items-center gap-2 border-t border-[#E5DED2]">
                   <Link href={`/books/${book._id}`} className="flex-1">
-                    <Button variant="outline" size="sm" className="w-full border-stone-300 text-stone-700">
+                    <Button variant="outline" size="sm" className="w-full border-[#E5DED2] text-[#292820] hover:bg-[#EAE2D5] active:scale-[0.98] transition-all">
                       <Eye className="mr-1.5 h-3.5 w-3.5" />
                       View
                     </Button>
@@ -308,26 +322,28 @@ function MyBooksContent() {
                   <Button
                     variant="outline"
                     size="sm"
+                    aria-label={`Edit ${book.title}`}
                     onClick={() => {
                       setEditingBook(book);
                       setEditOpen(true);
                     }}
-                    className="border-stone-300 text-stone-700 hover:text-[#1C3F3A]"
+                    className="border-[#E5DED2] text-[#292820] hover:text-[#987A50] hover:border-[#987A50] active:scale-[0.98] transition-all"
                   >
                     <Pencil className="h-3.5 w-3.5" />
-                    <span className="sr-only">Edit</span>
+                    <span className="sr-only">Edit {book.title}</span>
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
+                    aria-label={`Delete ${book.title}`}
                     onClick={() => {
                       setDeletingBook(book);
                       setDeleteOpen(true);
                     }}
-                    className="border-stone-300 text-red-600 hover:bg-red-50 hover:text-red-700"
+                    className="border-[#E5DED2] text-red-600 hover:bg-red-50 hover:text-red-700 active:scale-[0.98] transition-all"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
-                    <span className="sr-only">Delete</span>
+                    <span className="sr-only">Delete {book.title}</span>
                   </Button>
                 </div>
               </div>
