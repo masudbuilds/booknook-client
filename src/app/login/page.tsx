@@ -243,6 +243,17 @@ function LoginForm() {
                 >
                   Password
                 </Label>
+                <button
+                  type="button"
+                  onClick={() =>
+                    toast("Password recovery is not required for now.", {
+                      icon: "ℹ️",
+                    })
+                  }
+                  className="text-[11px] font-medium text-booknook-accent hover:underline underline-offset-2 transition-colors cursor-pointer"
+                >
+                  Forgot Password?
+                </button>
               </div>
               <div className="relative">
                 <Input

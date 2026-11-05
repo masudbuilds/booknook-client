@@ -421,7 +421,7 @@ function BookDetailsContent() {
               )}
             >
               <BookOpen className="mr-2 h-4 w-4" />
-              {isAvailable ? "Borrow This Book" : "Currently Unavailable"}
+              {isAvailable ? "Borrow This Book" : "Not Available"}
             </Button>
             <p className="mt-2 text-xs text-booknook-text/60 font-light">
               {isAvailable

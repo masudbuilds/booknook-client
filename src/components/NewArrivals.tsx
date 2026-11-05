@@ -191,10 +191,24 @@ export default function NewArrivals() {
 
       {/* Books Grid */}
       {!loading && !error && books.length > 0 && (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4.5 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-5">
-          {books.map((book) => (
-            <BookCard key={book._id || book.id} book={book} />
-          ))}
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4.5 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-5">
+            {books.map((book) => (
+              <BookCard key={book._id || book.id} book={book} />
+            ))}
+          </div>
+
+          <div className="flex justify-center pt-2">
+            <Link href="/books">
+              <Button
+                size="lg"
+                className="group h-11 px-8 rounded-sm bg-booknook-text text-booknook-bg hover:bg-booknook-accent active:scale-[0.98] transition-all text-xs font-semibold uppercase tracking-widest shadow-xs inline-flex items-center gap-2 cursor-pointer"
+              >
+                <span>See All Books</span>
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
         </div>
       )}
     </section>
