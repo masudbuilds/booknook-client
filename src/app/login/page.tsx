@@ -14,11 +14,7 @@ import { Label } from "@/components/ui/label";
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const rawCallback = searchParams.get("callbackUrl");
-  const callbackUrl =
-    rawCallback && rawCallback.startsWith("/") && !rawCallback.startsWith("//")
-      ? rawCallback
-      : "/";
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -96,7 +92,7 @@ function LoginForm() {
                 "url('https://images.unsplash.com/photo-1507842229451-9f7a177ce533?auto=format&fit=crop&w=1200&q=80')",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-booknook-text/95 via-booknook-text/75 to-booknook-text/40" />
+          <div className="absolute inset-0 bg-linear-to-t from-booknook-text/95 via-booknook-text/75 to-booknook-text/40" />
 
           {/* Top Brand Mark */}
           <div className="relative z-10">

@@ -14,11 +14,7 @@ import { Label } from "@/components/ui/label";
 function RegisterForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const rawCallback = searchParams.get("callbackUrl");
-  const callbackUrl =
-    rawCallback && rawCallback.startsWith("/") && !rawCallback.startsWith("//")
-      ? rawCallback
-      : "/";
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
