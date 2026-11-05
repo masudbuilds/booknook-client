@@ -140,7 +140,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-booknook-accent shrink-0" />
-                <span>+8801700000000</span>
+                <span>+8801800000000</span>
               </li>
             </ul>
             <p className="pt-2 text-[11px] text-booknook-text/60 font-light">

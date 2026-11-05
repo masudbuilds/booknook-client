@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BookNook – A Curated Online Library",
+  title: "BookNook – A Small Online Library",
   description: "An elegant, minimalist community library to discover, borrow, and share beloved books.",
 };
 

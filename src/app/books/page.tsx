@@ -155,17 +155,17 @@ export default function AllBooksPage() {
       </div>
 
       {loading && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4.5 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-5">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
             <div
               key={item}
-              className="flex h-full animate-pulse flex-col overflow-hidden rounded-sm border border-booknook-border bg-booknook-white"
+              className="flex h-full animate-pulse flex-col overflow-hidden rounded-xs border border-booknook-border/80 bg-booknook-white shadow-2xs max-w-[320px] sm:max-w-none mx-auto w-full"
             >
-              <div className="aspect-3/4 w-full bg-booknook-secondary/50" />
-              <div className="space-y-3 p-5">
-                <div className="h-4 w-3/4 rounded bg-booknook-secondary/60" />
-                <div className="h-3 w-1/2 rounded bg-booknook-secondary/40" />
-                <div className="mt-4 h-8 w-full rounded bg-booknook-secondary/30" />
+              <div className="aspect-[3/4] w-full bg-booknook-secondary/40" />
+              <div className="space-y-2.5 p-3.5 sm:p-4">
+                <div className="h-4 w-3/4 rounded-xs bg-booknook-secondary/60" />
+                <div className="h-3 w-1/2 rounded-xs bg-booknook-secondary/40" />
+                <div className="mt-3 h-6 w-full rounded-xs bg-booknook-secondary/30" />
               </div>
             </div>
           ))}
@@ -241,7 +241,7 @@ export default function AllBooksPage() {
       )}
 
       {!loading && !error && filteredBooks.length > 0 && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4.5 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-5">
           {filteredBooks.map((book) => (
             <BookCard key={book._id || book.id} book={book} />
           ))}

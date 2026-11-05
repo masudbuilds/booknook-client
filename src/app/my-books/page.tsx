@@ -17,7 +17,6 @@ import toast from "react-hot-toast";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useSession } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
@@ -215,17 +214,17 @@ function MyBooksContent() {
 
       {/* Loading Skeletons */}
       {loading && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4.5 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-5">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
             <div
               key={item}
-              className="flex h-full animate-pulse flex-col overflow-hidden rounded-xs border border-booknook-border bg-booknook-white shadow-2xs"
+              className="flex h-full animate-pulse flex-col overflow-hidden rounded-xs border border-booknook-border/80 bg-booknook-white shadow-2xs max-w-[320px] sm:max-w-none mx-auto w-full"
             >
-              <div className="aspect-3/4 w-full bg-booknook-secondary/50" />
-              <div className="space-y-3 p-5">
+              <div className="aspect-[3/4] w-full bg-booknook-secondary/40" />
+              <div className="space-y-2.5 p-3.5 sm:p-4">
                 <div className="h-4 w-3/4 rounded-xs bg-booknook-secondary/60" />
                 <div className="h-3 w-1/2 rounded-xs bg-booknook-secondary/40" />
-                <div className="h-10 w-full rounded-xs bg-booknook-secondary/30 mt-4" />
+                <div className="h-8 w-full rounded-xs bg-booknook-secondary/30 mt-3" />
               </div>
             </div>
           ))}
@@ -285,16 +284,16 @@ function MyBooksContent() {
 
       {/* Contributed Books Grid */}
       {!loading && !error && books.length > 0 && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4.5 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-5">
           {books.map((book) => {
             const isAvailable = (book.availableCopies || 0) > 0;
             return (
               <div
                 key={book._id}
-                className="group flex h-full flex-col overflow-hidden rounded-xs border border-booknook-border bg-booknook-white shadow-2xs transition-all duration-300 hover:border-booknook-accent hover:-translate-y-0.5 hover:shadow-md"
+                className="group flex h-full flex-col overflow-hidden rounded-xs border border-booknook-border/80 bg-booknook-white shadow-2xs transition-all duration-300 hover:border-booknook-accent hover:-translate-y-0.5 hover:shadow-xs max-w-[320px] sm:max-w-none mx-auto w-full"
               >
                 {/* Book Cover with Spine Shadow Effect */}
-                <div className="relative aspect-3/4 w-full overflow-hidden bg-booknook-secondary/40 after:absolute after:inset-y-0 after:left-0 after:w-2 after:bg-linear-to-r after:from-black/25 after:to-transparent after:pointer-events-none">
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-booknook-secondary/30 border-b border-booknook-border/70 after:absolute after:inset-y-0 after:left-0 after:w-2 after:bg-linear-to-r after:from-black/20 after:to-transparent after:pointer-events-none">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={book.image}
@@ -303,18 +302,15 @@ function MyBooksContent() {
                     loading="lazy"
                   />
                   {/* Category Badge */}
-                  <div className="absolute top-3 left-3 z-10 max-w-[55%]">
-                    <Badge
-                      variant="outline"
-                      className="bg-booknook-bg/95 font-medium text-[11px] border-booknook-border text-booknook-text max-w-full truncate shadow-2xs rounded-xs uppercase tracking-wider"
-                    >
+                  <div className="absolute top-2.5 left-2.5 z-10 max-w-[55%]">
+                    <span className="inline-block max-w-full truncate rounded-xs bg-booknook-bg/95 backdrop-blur-xs px-2 py-0.5 text-[9px] uppercase tracking-wider font-medium text-booknook-text border border-booknook-border shadow-2xs">
                       {book.category}
-                    </Badge>
+                    </span>
                   </div>
                   {/* Inventory Pill */}
-                  <div className="absolute top-3 right-3 z-10 shrink-0">
+                  <div className="absolute top-2.5 right-2.5 z-10 shrink-0">
                     <span
-                      className={`inline-flex items-center rounded-xs px-2.5 py-0.5 text-[10px] uppercase tracking-wider font-medium shadow-2xs ${
+                      className={`inline-flex items-center rounded-xs px-2 py-0.5 text-[9px] uppercase tracking-wider font-medium shadow-2xs ${
                         isAvailable
                           ? "bg-booknook-text text-booknook-bg"
                           : "bg-destructive text-white"
@@ -326,8 +322,8 @@ function MyBooksContent() {
                 </div>
 
                 {/* Book Details */}
-                <div className="flex flex-1 flex-col p-5 space-y-2">
-                  <h3 className="font-serif text-lg font-normal text-booknook-text line-clamp-1 group-hover:text-booknook-accent transition-colors">
+                <div className="flex flex-1 flex-col p-3.5 sm:p-4">
+                  <h3 className="font-serif text-[15px] sm:text-base font-normal text-booknook-text line-clamp-1 group-hover:text-booknook-accent transition-colors leading-snug">
                     <Link
                       href={`/books/${book._id}`}
                       className="hover:underline underline-offset-2"
@@ -335,20 +331,22 @@ function MyBooksContent() {
                       {book.title}
                     </Link>
                   </h3>
-                  <p className="text-xs text-booknook-text/60 font-light">By {book.author}</p>
-                  <p className="text-xs text-booknook-text/75 font-light line-clamp-2 leading-relaxed">
-                    {book.description}
-                  </p>
+                  <p className="mt-1 text-xs text-booknook-text/65 font-light truncate">By {book.author}</p>
+                  {book.description && (
+                    <p className="mt-2 text-[11px] sm:text-xs text-booknook-text/70 font-light line-clamp-2 leading-relaxed">
+                      {book.description}
+                    </p>
+                  )}
 
                   {/* Actions Footer */}
-                  <div className="mt-auto pt-4 flex items-center gap-2 border-t border-booknook-border">
+                  <div className="mt-auto pt-3 flex items-center gap-1.5 border-t border-booknook-border/60">
                     <Link href={`/books/${book._id}`} className="flex-1">
                       <Button
                         variant="outline"
                         size="sm"
-                        className="w-full h-8.5 border-booknook-border bg-booknook-white text-booknook-text hover:bg-booknook-secondary active:scale-[0.98] rounded-xs text-[11px] uppercase tracking-wider font-medium transition-all"
+                        className="w-full h-7.5 border-booknook-border bg-booknook-white text-booknook-text hover:bg-booknook-secondary active:scale-[0.98] rounded-xs text-[10px] sm:text-[11px] uppercase tracking-wider font-medium transition-all"
                       >
-                        <Eye className="mr-1.5 h-3.5 w-3.5 text-booknook-accent" />
+                        <Eye className="mr-1 h-3 w-3 text-booknook-accent" />
                         <span>View</span>
                       </Button>
                     </Link>
@@ -361,9 +359,9 @@ function MyBooksContent() {
                         setEditingBook(book);
                         setEditOpen(true);
                       }}
-                      className="h-8.5 px-3 border-booknook-border bg-booknook-white text-booknook-text hover:text-booknook-accent hover:border-booknook-accent active:scale-[0.98] rounded-xs transition-all"
+                      className="h-7.5 px-2.5 border-booknook-border bg-booknook-white text-booknook-text hover:text-booknook-accent hover:border-booknook-accent active:scale-[0.98] rounded-xs transition-all"
                     >
-                      <Pencil className="h-3.5 w-3.5" />
+                      <Pencil className="h-3 w-3" />
                       <span className="sr-only">Edit {book.title}</span>
                     </Button>
 
@@ -375,9 +373,9 @@ function MyBooksContent() {
                         setDeletingBook(book);
                         setDeleteOpen(true);
                       }}
-                      className="h-8.5 px-3 border-destructive/30 bg-booknook-white text-destructive hover:bg-destructive/10 hover:border-destructive active:scale-[0.98] rounded-xs transition-all"
+                      className="h-7.5 px-2.5 border-destructive/30 bg-booknook-white text-destructive hover:bg-destructive/10 hover:border-destructive active:scale-[0.98] rounded-xs transition-all"
                     >
-                      <Trash2 className="h-3.5 w-3.5" />
+                      <Trash2 className="h-3 w-3" />
                       <span className="sr-only">Delete {book.title}</span>
                     </Button>
                   </div>
